@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAHMUDUL HASAN MASUM - Professional Video Editor Portfolio</title>
+  <meta name="description" content="Portfolio of Mahmudul Hasan Masum, Professional Video Editor & Visual Storyteller. Specializing in high-retention video cuts, YouTube Shorts, reels, and graphic design.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    body, header, section, div, footer, button, a {
+      transition-property: background-color, border-color, color, fill, stroke;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 200ms;
+    }
+    /* Cursor Glow Canvas */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: radial-gradient(400px circle at 50% 50%, rgba(245, 158, 11, 0.16), rgba(251, 191, 36, 0.06) 45%, transparent 75%);
+    }
+  </style>
+</head>
+<body class="bg-[#07080a] text-slate-100 antialiased selection:bg-yellow-400 selection:text-black min-h-screen relative">
+
+  <!-- DYNAMIC GOLDEN CURSOR GLOW EFFECT -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- A. NAVIGATION BAR -->
+  <header id="navbar" class="sticky top-0 z-40 w-full border-b backdrop-blur-md bg-[#08090c]/90 border-amber-500/20 text-yellow-300 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <!-- Creator Brand Name -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 text-black flex items-center justify-center font-black text-sm shadow-md shadow-amber-500/20">
+          🎬
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-base sm:text-lg tracking-wider uppercase bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent group-hover:brightness-125 transition-all">
+            MAHMUDUL HASAN MASUM
+          </span>
+          <span class="text-[11px] font-semibold tracking-wider uppercase text-amber-400/80">
+            Video Editor & Storyteller
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold tracking-wide">
+        <a href="#featured-video" class="text-slate-300 hover:text-yellow-400 transition-colors">Featured</a>
+        <a href="#video-portfolio" class="text-slate-300 hover:text-yellow-400 transition-colors">Videos</a>
+        <a href="#graphic-works" class="text-slate-300 hover:text-yellow-400 transition-colors">Graphics</a>
+        <a href="#about-section" class="text-slate-300 hover:text-yellow-400 transition-colors">About</a>
+        <a href="#contact-section" class="text-slate-300 hover:text-yellow-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right: WhatsApp Pill & Dark/Light Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20video%20editing%20portfolio!"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/20 border border-emerald-400/40 hover:scale-102 transition-all"
+        >
+          <span>💬 WhatsApp:</span>
+          <span class="font-mono">01832313750</span>
+        </a>
+
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle Theme"
+          class="p-2 rounded-xl border border-amber-500/30 bg-black/60 text-yellow-400 hover:bg-amber-500/10 cursor-pointer transition-all"
+        >
+          <span id="theme-icon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="relative z-10">
+
+    <!-- B. HERO SECTION -->
+    <section id="hero-section" class="pt-6 pb-12 sm:pt-10 sm:pb-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- FEATURED / BEST VIDEO (TOP OF BODY) -->
+        <div id="featured-video" class="mb-10 sm:mb-14">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/15 text-yellow-400 border border-yellow-400/40 shadow-sm shadow-yellow-500/10">
+                ✨ Featured Trailer • Best Work
+              </span>
+            </div>
+            
+            <a
+              href="https://www.youtube.com/shorts/7-4GKg2K0cE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-400 hover:text-yellow-300 hover:underline"
+            >
+              <span>Watch on YouTube</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+
+          <!-- 16:9 Aspect Ratio Container with subtle gold glow -->
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-amber-500/30 bg-black shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(245,158,11,0.15)]">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE"
+              title="Featured Best Work Reel - 7-4GKg2K0cE"
+              class="w-full h-full border-0 absolute inset-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="mt-3 flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
+            <span class="text-amber-200/70">
+              🎬 Dynamic trailer cut — sound design, rhythmic pacing, & visual sequencing.
+            </span>
+            <span class="font-mono text-[11px] font-bold text-yellow-400">
+              Aspect Ratio 16:9 • High Definition
+            </span>
+          </div>
+        </div>
+
+        <!-- SHORT GREETING & PROFILE PICTURE (WITH WHATSAPP 01832313750) -->
+        <div class="p-6 sm:p-10 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-[#0c0d12] via-[#090a0e] to-[#12131a] shadow-[0_15px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(234,179,8,0.1)] relative overflow-hidden">
+          
+          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-10 relative z-10">
+            
+            <!-- PROFILE PICTURE & WHATSAPP CARD -->
+            <div class="flex flex-col items-center shrink-0">
+              <div class="relative group">
+                <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 opacity-75 blur-md group-hover:opacity-100 transition duration-500"></div>
+                
+                <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden ring-3 ring-yellow-400 shadow-2xl bg-black">
+                  <img
+                    src="profile.jpg"
+                    alt="Profile picture of Mahmudul Hasan Masum"
+                    class="w-full h-full object-cover object-center transform group-hover:scale-108 transition-transform duration-700"
+                  />
+                </div>
+
+                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-extrabold flex items-center gap-1.5 shadow-lg border bg-black text-yellow-300 border-yellow-400/60 whitespace-nowrap">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  AVAILABLE FOR COMMISSIONS
+                </div>
+              </div>
+
+              <!-- WHATSAPP PROMINENT CARD UNDER PROFILE -->
+              <div class="mt-7 w-full max-w-[260px] p-3.5 rounded-2xl border border-amber-500/30 bg-black/70 text-center shadow-lg">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1.5">
+                  💬 WhatsApp Direct Contact
+                </div>
+                <a
+                  href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20video%20editing%20portfolio!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-md transition-all"
+                >
+                  <span>Chat: 01832313750</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- GREETING & PROMINENT CREATOR NAME -->
+            <div class="flex-1 text-center lg:text-left space-y-4">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
+                ⭐ Visual Storyteller & Video Editor
+              </div>
+
+              <div>
+                <h2 class="text-sm font-bold tracking-widest uppercase text-amber-300/70 mb-1">
+                  Hello, I Am
+                </h2>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(245,158,11,0.25)] leading-tight">
+                  MAHMUDUL HASAN MASUM
+                </h1>
+              </div>
+
+              <p class="text-base sm:text-lg leading-relaxed text-slate-300 max-w-2xl">
+                Welcome to my creative portfolio! I edit high-retention video content, YouTube shorts, reels, and cinematic trailers with meticulous pacing, dynamic transitions, and impactful sound design.
+              </p>
+
+              <!-- Action Buttons -->
+              <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+                <a
+                  href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20video%20editing%20portfolio!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-white shadow-lg shadow-emerald-500/25"
+                >
+                  <span>💬 WhatsApp (01832313750)</span>
+                </a>
+
+                <a
+                  href="#video-portfolio"
+                  class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 text-black shadow-lg shadow-amber-500/25 hover:brightness-110"
+                >
+                  <span>▶ Explore 5 Video Edits</span>
+                </a>
+
+                <a
+                  href="mailto:mahmud2026k@gmail.com?subject=Video%20Editing%20Inquiry"
+                  class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-bold border border-amber-500/30 bg-black/60 text-amber-300 hover:bg-amber-500/10"
+                >
+                  Email Me
+                </a>
+              </div>
+
+              <!-- Skill Tags -->
+              <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-semibold">
+                <span class="px-3 py-1 rounded-lg border border-amber-500/20 bg-amber-500/10 text-yellow-300">⚡ Beat-Matched Pacing</span>
+                <span class="px-3 py-1 rounded-lg border border-amber-500/20 bg-amber-500/10 text-yellow-300">🔊 Immersive Sound Design</span>
+                <span class="px-3 py-1 rounded-lg border border-amber-500/20 bg-amber-500/10 text-yellow-300">📈 Viral Retention Hooks</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- C. VIDEO PORTFOLIO GRID -->
+    <section id="video-portfolio" class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-2">
+              🎬 Curated Video Portfolio
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Selected Video Editing Works
+            </h2>
+            <p class="mt-1.5 text-sm sm:text-base text-amber-200/70 max-w-xl">
+              High-impact vertical shorts, kinetic cuts, and dynamic motion sequences engineered for engagement and sound synchronization.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-yellow-400 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-black">
+            5 Video Showcases
+          </span>
+        </div>
+
+        <!-- 5-Column Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          
+          <!-- Video 1 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover:-translate-y-2 hover:border-yellow-400 hover:shadow-[0_15px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)] transition-all flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #1</span>
+              <a href="https://www.youtube.com/shorts/1Q_cR71UGuk" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Kinetic Edit 01</h3>
+              <p class="mt-1 text-xs text-slate-400">High-energy vertical cut with beat-matched pacing.</p>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover:-translate-y-2 hover:border-yellow-400 hover:shadow-[0_15px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)] transition-all flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #2</span>
+              <a href="https://www.youtube.com/shorts/OJMtDsnlC6c" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Visual Flow 02</h3>
+              <p class="mt-1 text-xs text-slate-400">Dynamic cut with stylized color grading.</p>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover:-translate-y-2 hover:border-yellow-400 hover:shadow-[0_15px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)] transition-all flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #3</span>
+              <a href="https://www.youtube.com/shorts/x48dOQQ3Xok" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Rhythm & Beat 03</h3>
+              <p class="mt-1 text-xs text-slate-400">Punchy sound design and micro-transitions.</p>
+            </div>
+          </div>
+
+          <!-- Video 4: Facebook Reel -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover:-translate-y-2 hover:border-yellow-400 hover:shadow-[0_15px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)] transition-all flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">Facebook Reel #4</span>
+              <a href="https://www.facebook.com/share/r/1CBad8bAtN/" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1CBad8bAtN%2F&show_text=0" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Creative Sequence 04</h3>
+              <p class="mt-1 text-xs text-slate-400">Storytelling narrative reel edit.</p>
+            </div>
+          </div>
+
+          <!-- Video 5: YouTube Short -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover:-translate-y-2 hover:border-yellow-400 hover:shadow-[0_15px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)] transition-all flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #5</span>
+              <a href="https://www.youtube.com/shorts/7-4GKg2K0cE" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Visual Rhythm 05</h3>
+              <p class="mt-1 text-xs text-slate-400">High-retention cut with audio synchronization.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- D. GRAPHIC WORK SECTION -->
+    <section id="graphic-works" class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-2">
+              🎨 Visual Design Portfolio
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Graphic & Poster Designs</h2>
+            <p class="mt-1.5 text-sm sm:text-base text-amber-200/70 max-w-xl">
+              Creative banners, promotional visual concepts, and graphic art pieces. Click any image to view in high-resolution lightbox.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-yellow-400 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-black">
+            6 Graphic Showcases
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <!-- 6 Image Cards -->
+          <div onclick="openLightbox('graphic1.jpg', 'Graphic Poster Concept 01', 'Promotional Banner')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic1.jpg" alt="Graphic Design 1" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 01</h3><p class="text-xs text-amber-200/60">graphic1.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox('graphic2.jpg', 'Graphic Poster Concept 02', 'Thumbnail & Key Art')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic2.jpg" alt="Graphic Design 2" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 02</h3><p class="text-xs text-amber-200/60">graphic2.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox('graphic3.jpg', 'Graphic Poster Concept 03', 'Social Media Graphic')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic3.jpg" alt="Graphic Design 3" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 03</h3><p class="text-xs text-amber-200/60">graphic3.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox('graphic4.jpg', 'Graphic Poster Concept 04', 'Commercial Art')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic4.jpg" alt="Graphic Design 4" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 04</h3><p class="text-xs text-amber-200/60">graphic4.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox('graphic5.jpg', 'Graphic Poster Concept 05', 'Event & Promo Poster')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic5.jpg" alt="Graphic Design 5" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 05</h3><p class="text-xs text-amber-200/60">graphic5.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox('graphic6.jpg', 'Graphic Poster Concept 06', 'Motion Background Art')" class="group rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover:-translate-y-1.5 hover:border-yellow-400 cursor-pointer transition-all">
+            <div class="relative aspect-[4/3] bg-black overflow-hidden">
+              <img src="graphic6.jpg" alt="Graphic Design 6" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div><h3 class="font-bold text-sm group-hover:text-yellow-400">Poster Artwork 06</h3><p class="text-xs text-amber-200/60">graphic6.jpg</p></div>
+              <span class="text-yellow-400 font-bold text-sm">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E. DETAILED ABOUT ME (BIO) SECTION -->
+    <section id="about-section" class="py-12 sm:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="p-6 sm:p-12 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-[#0c0d12] via-[#090a0e] to-[#12131a] shadow-2xl relative overflow-hidden">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-3">
+            ⭐ About Me • Creative Philosophy
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-6">
+            Honest Passion, Modern Craft & Visual Storytelling
+          </h2>
+          <div class="p-6 sm:p-8 rounded-2xl border border-amber-500/25 bg-black/60 text-slate-200 mb-8">
+            <p class="text-base sm:text-lg leading-relaxed">
+              &ldquo;I am a passionate video editor dedicated to the art of visual storytelling. Over the past several months, I have immersed myself in learning the ins and outs of editing—practicing daily, refining my pacing, and perfecting my sound design. While I don't claim decades of industry experience, I bring fresh creativity, high-energy dedication, and a modern aesthetic to every frame. Let's create something memorable together.&rdquo;
+            </p>
+            <div class="mt-4 pt-4 border-t border-amber-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <span class="font-bold text-yellow-400 uppercase tracking-wider">— MAHMUDUL HASAN MASUM</span>
+              <span class="font-mono text-amber-200/60">Focused on Daily Mastery & Authentic Quality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- F. GET IN TOUCH SECTION (WHATSAPP 01832313750) -->
+    <section id="contact-section" class="py-12 sm:py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-yellow-500/10 text-yellow-400 border border-yellow-400/30">
+          ✨ Let&apos;s Build Something Memorable
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4">
+          Get in Touch & Start Editing
+        </h2>
+        <p class="text-base sm:text-lg max-w-xl mx-auto mb-10 text-slate-300">
+          Contact me directly on WhatsApp (01832313750) or email for fast turnaround and collaborative video production.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 text-left">
+          
+          <!-- WhatsApp Card -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-emerald-500/40 bg-gradient-to-br from-[#0a1210] to-[#0d1714] shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold text-xl">
+                💬
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                Fastest Response
+              </span>
+            </div>
+            <h3 class="text-xl font-black mb-1">WhatsApp Chat</h3>
+            <p class="text-xs text-slate-300 mb-4">Message directly for project timelines, clips, or briefs.</p>
+            <div class="p-3.5 rounded-xl bg-black/60 border border-emerald-500/30 mb-4 flex items-center justify-between font-mono font-bold text-emerald-300 text-sm">
+              <span>01832313750</span>
+              <span class="text-xs text-emerald-400">Direct Chat</span>
+            </div>
+            <a
+              href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20video%20editing%20portfolio!"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25"
+            >
+              Open WhatsApp & Chat Now
+            </a>
+          </div>
+
+          <!-- Email Card -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-[#121008] to-[#17140b] shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-black flex items-center justify-center font-bold text-xl">
+                ✉️
+              </div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                Official Email
+              </span>
+            </div>
+            <h3 class="text-xl font-black mb-1">Direct Email</h3>
+            <p class="text-xs text-slate-300 mb-4">Send footage links, Google Drive links, and briefs.</p>
+            <div class="p-3.5 rounded-xl bg-black/60 border border-amber-500/30 mb-4 font-mono font-bold text-yellow-300 text-xs truncate">
+              mahmud2026k@gmail.com
+            </div>
+            <a
+              href="mailto:mahmud2026k@gmail.com?subject=Video%20Editing%20Collaboration"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 text-black shadow-lg shadow-amber-500/25 hover:brightness-110"
+            >
+              Send An Email
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-amber-500/20 bg-[#050608] py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="text-center sm:text-left">
+        <span class="font-extrabold text-sm uppercase tracking-wider text-yellow-400">MAHMUDUL HASAN MASUM</span>
+        <p class="text-xs text-slate-400">Video Editor & Visual Storyteller • WhatsApp: 01832313750</p>
+      </div>
+      <a href="#top" class="p-2 rounded-xl border border-amber-500/30 bg-black text-yellow-300 hover:bg-amber-500/10">
+        &uarr; Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/95 backdrop-blur-md">
+    <div class="relative max-w-4xl w-full flex flex-col items-center">
+      <div class="w-full flex items-center justify-between text-yellow-300 mb-2">
+        <span id="lightbox-title" class="font-bold text-sm"></span>
+        <button onclick="closeLightbox()" class="px-3 py-1 rounded-xl bg-yellow-400 text-black font-black text-sm">Close &times;</button>
+      </div>
+      <img id="lightbox-img" src="" alt="Enlarged graphic" class="max-h-[80vh] max-w-full rounded-xl border border-amber-500/40 shadow-2xl object-contain">
+    </div>
+  </div>
+
+  <script>
+    // 1. CURSOR GLOW INTERACTION
+    const glow = document.getElementById('cursor-glow');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+    let glowVisible = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!glowVisible) {
+        glowVisible = true;
+        glow.style.opacity = '1';
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      glow.style.opacity = '0';
+      glowVisible = false;
+    });
+
+    function updateGlow() {
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      glow.style.background = `radial-gradient(420px circle at ${Math.round(currentX)}px ${Math.round(currentY)}px, rgba(245, 158, 11, 0.18), rgba(251, 191, 36, 0.07) 40%, rgba(255, 255, 255, 0.02) 65%, transparent 80%)`;
+      requestAnimationFrame(updateGlow);
+    }
+    requestAnimationFrame(updateGlow);
+
+    // 2. THEME TOGGLE
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlEl = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        document.body.classList.remove('bg-[#07080a]', 'text-slate-100');
+        document.body.classList.add('bg-[#fafaf9]', 'text-slate-900');
+        themeIcon.textContent = '🌙';
+      } else {
+        htmlEl.classList.add('dark');
+        document.body.classList.remove('bg-[#fafaf9]', 'text-slate-900');
+        document.body.classList.add('bg-[#07080a]', 'text-slate-100');
+        themeIcon.textContent = '☀️';
+      }
+    });
+
+    // 3. LIGHTBOX FUNCTIONS
+    function openLightbox(src, title, category) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const titleEl = document.getElementById('lightbox-title');
+      img.src = src;
+      titleEl.textContent = title + ' (' + category + ')';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

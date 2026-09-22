@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahmudul Hasan Masum | Video Editor • Graphic Designer • Meta Marketer</title>
+  <meta name="description" content="Portfolio of Mahmudul Hasan Masum: Video Editor, Graphic Designer & Meta Marketer. Featuring Premiere Pro, After Effects, Photoshop, CapCut, video edits and Meta Ads." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    body, header, section, div, footer, button, a {
+      transition-property: background-color, border-color, color, fill, stroke;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 200ms;
+    }
+    /* Cursor Glow Canvas */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: radial-gradient(420px circle at 50% 50%, rgba(245, 158, 11, 0.18), rgba(251, 191, 36, 0.08) 45%, transparent 75%);
+    }
+    #cursor-follower {
+      pointer-events: none;
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(245, 158, 11, 0.7);
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+      transition: transform 0.15s ease-out, border-color 0.2s ease, width 0.2s, height 0.2s;
+    }
+    #cursor-dot {
+      pointer-events: none;
+      position: fixed;
+      width: 7px;
+      height: 7px;
+      background: #facc15;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 51;
+      box-shadow: 0 0 10px #facc15;
+    }
+    .hover-lift {
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+    @keyframes clickWave {
+      0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; border-width: 3px; }
+      100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; border-width: 1px; }
+    }
+    .click-wave {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      border: 2px solid #facc15;
+      box-shadow: 0 0 16px #facc15;
+      animation: clickWave 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 999;
+    }
+    @keyframes particleBurst {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    }
+    .click-particle {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      animation: particleBurst 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body class="bg-[#07080a] text-slate-100 antialiased selection:bg-yellow-400 selection:text-black min-h-screen relative">
+
+  <!-- DYNAMIC GOLDEN CURSOR GLOW EFFECT -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <div id="cursor-follower" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <!-- A. NAVIGATION BAR -->
+  <header id="navbar" class="sticky top-0 z-40 w-full border-b backdrop-blur-md bg-[#08090c]/90 border-amber-500/20 text-yellow-300 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <!-- Creator Brand Name -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 text-black flex items-center justify-center font-black text-sm shadow-md shadow-amber-500/20">
+          🎬
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-base sm:text-lg tracking-wider uppercase bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent group-hover:brightness-125 transition-all">
+            MAHMUDUL HASAN MASUM
+          </span>
+          <span class="text-[11px] font-bold tracking-wider uppercase text-amber-400/90">
+            Video Editor • Graphic Designer • Meta Marketer
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold tracking-wide">
+        <a href="#creative-stack" class="text-slate-300 hover:text-yellow-400 transition-colors">Tools & Skills</a>
+        <a href="#featured-video" class="text-slate-300 hover:text-yellow-400 transition-colors">Featured</a>
+        <a href="#video-portfolio" class="text-slate-300 hover:text-yellow-400 transition-colors">Videos</a>
+        <a href="#graphic-works" class="text-slate-300 hover:text-yellow-400 transition-colors">Graphics</a>
+        <a href="#about-section" class="text-slate-300 hover:text-yellow-400 transition-colors">About</a>
+        <a href="#contact-section" class="text-slate-300 hover:text-yellow-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Action & Theme Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20collaborate!"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-md shadow-emerald-600/25 border border-emerald-400/40"
+        >
+          <span>💬 WhatsApp: 01832313750</span>
+        </a>
+
+        <button
+          id="theme-toggle"
+          type="button"
+          class="p-2 rounded-xl border border-amber-500/30 bg-black/60 text-yellow-400 hover:bg-amber-500/10 cursor-pointer"
+          title="Toggle Light / Dark Mode"
+        >
+          <span id="theme-icon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main id="top" class="relative z-10">
+
+    <!-- B. HERO SECTION -->
+    <section id="hero-section" class="pt-6 pb-12 sm:pt-10 sm:pb-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Featured Highlight Video (Top) -->
+        <div id="featured-video" class="mb-10 sm:mb-14">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/15 text-yellow-400 border border-yellow-400/40 shadow-sm shadow-yellow-500/10">
+              ✨ Featured Trailer • Best Work
+            </span>
+            <a href="https://www.youtube.com/shorts/7-4GKg2K0cE" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-yellow-400 hover:underline">
+              Watch on YouTube &nearr;
+            </a>
+          </div>
+
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-amber-500/30 bg-black shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(245,158,11,0.15)]">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE"
+              title="Visual Rhythm • Best Work Showcase"
+              class="w-full h-full border-0 absolute inset-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Short Greeting & Profile Picture with WhatsApp Card -->
+        <div class="p-6 sm:p-10 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-[#0c0d12] via-[#090a0e] to-[#12131a] shadow-[0_15px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(234,179,8,0.1)]">
+          <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-10">
+            
+            <!-- Profile Avatar & WhatsApp info -->
+            <div class="flex flex-col items-center shrink-0">
+              <div class="relative group">
+                <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 opacity-75 blur-md"></div>
+                <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden ring-3 ring-yellow-400 shadow-2xl bg-black">
+                  <img src="profile.jpg" alt="Mahmudul Hasan Masum" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-extrabold flex items-center gap-1.5 bg-black text-yellow-300 border border-yellow-400/60 whitespace-nowrap shadow-md">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  AVAILABLE FOR COMMISSIONS
+                </div>
+              </div>
+
+              <!-- WhatsApp Card Directly under Profile -->
+              <div class="mt-7 w-full max-w-[260px] p-3 rounded-2xl border border-amber-500/30 bg-black/70 text-center shadow-lg hover-lift">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1.5">
+                  💬 WhatsApp Direct
+                </div>
+                <a
+                  href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20collaborate!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-md"
+                >
+                  01832313750
+                </a>
+              </div>
+
+              <!-- Quick Software Badges -->
+              <div class="mt-3 flex items-center justify-center gap-1.5 flex-wrap max-w-[260px]">
+                <span class="px-2 py-0.5 rounded bg-[#9999FF]/20 text-[#B8B8FF] border border-[#9999FF]/40 text-[10px] font-bold">Pr</span>
+                <span class="px-2 py-0.5 rounded bg-[#D291FF]/20 text-[#E0B0FF] border border-[#D291FF]/40 text-[10px] font-bold">Ae</span>
+                <span class="px-2 py-0.5 rounded bg-[#31A8FF]/20 text-[#64B5F6] border border-[#31A8FF]/40 text-[10px] font-bold">Ps</span>
+                <span class="px-2 py-0.5 rounded bg-[#FF9A00]/20 text-[#FFA726] border border-[#FF9A00]/40 text-[10px] font-bold">Ai</span>
+                <span class="px-2 py-0.5 rounded bg-[#00F2FE]/20 text-[#4DD0E1] border border-[#00F2FE]/40 text-[10px] font-bold">Cc</span>
+                <span class="px-2 py-0.5 rounded bg-[#FF3366]/20 text-[#FF6B8B] border border-[#FF3366]/40 text-[10px] font-bold">Km</span>
+              </div>
+            </div>
+
+            <!-- Greeting Text & 3-Discipline Title -->
+            <div class="flex-1 text-center lg:text-left space-y-4">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
+                🏆 Video Editor • Graphic Designer • Meta Marketer
+              </div>
+
+              <div>
+                <h2 class="text-sm font-bold tracking-widest uppercase text-amber-300/70 mb-1">
+                  Creative Portfolio of
+                </h2>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(245,158,11,0.25)] leading-tight">
+                  MAHMUDUL HASAN MASUM
+                </h1>
+              </div>
+
+              <!-- 3 Pillars Badges -->
+              <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+                <span class="px-3 py-1 rounded-xl text-xs font-black bg-yellow-400/15 text-yellow-300 border border-yellow-400/40">🎬 Video Editing</span>
+                <span class="px-3 py-1 rounded-xl text-xs font-black bg-sky-400/15 text-sky-300 border border-sky-400/40">🎨 Graphic Design</span>
+                <span class="px-3 py-1 rounded-xl text-xs font-black bg-emerald-400/15 text-emerald-300 border border-emerald-400/40">📈 Meta Marketing</span>
+              </div>
+
+              <p class="text-base sm:text-lg leading-relaxed text-slate-300 max-w-2xl">
+                Welcome to my creative portfolio! I edit high-retention video content (Premiere Pro, After Effects, CapCut, KineMaster), design high-CTR thumbnails and posters (Photoshop, Illustrator), and scale digital campaigns through Meta Ads marketing.
+              </p>
+
+              <!-- Hero Buttons -->
+              <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+                <a
+                  href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20collaborate!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/25 border border-emerald-300/30 hover-lift"
+                >
+                  💬 Chat on WhatsApp (01832313750)
+                </a>
+
+                <a
+                  href="#creative-stack"
+                  class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 text-black shadow-lg shadow-amber-500/25 hover-lift"
+                >
+                  ⚡ View Software Stack
+                </a>
+
+                <a
+                  href="#video-portfolio"
+                  class="inline-flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-bold border border-amber-500/30 bg-black/60 text-amber-300 hover:bg-amber-500/10 hover-lift"
+                >
+                  🎬 7 Video Edits
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- C. SOFTWARE STACK & 3 DISCIPLINE SECTION -->
+    <section id="creative-stack" class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-10 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/40 mb-3">
+            ✨ Full Creative Suite
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight">
+            <span class="text-yellow-400">Video Editor</span> • <span class="text-sky-400">Graphic Designer</span> • <span class="text-emerald-400">Meta Marketer</span>
+          </h2>
+          <p class="mt-2 text-sm sm:text-base text-amber-100/70 max-w-2xl mx-auto">
+            Mastery across premier industry tools for high-retention cuts, viral hooks, thumbnail graphics, and profitable Meta Ad marketing.
+          </p>
+        </div>
+
+        <!-- 3 Core Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+          <div class="p-5 rounded-2xl border border-amber-500/25 bg-[#0f1118] hover-lift">
+            <h3 class="text-base font-extrabold text-yellow-400 mb-1">1. Video Editing</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">Pacing, beat-sync cuts, sound fx, motion overlays, and viral retention for Shorts & Reels.</p>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-bold">
+              <span class="px-2 py-0.5 rounded bg-[#9999FF]/20 text-[#B8B8FF] border border-[#9999FF]/30">Premiere Pro</span>
+              <span class="px-2 py-0.5 rounded bg-[#D291FF]/20 text-[#E0B0FF] border border-[#D291FF]/30">After Effects</span>
+              <span class="px-2 py-0.5 rounded bg-[#00F2FE]/20 text-[#4DD0E1] border border-[#00F2FE]/30">CapCut</span>
+              <span class="px-2 py-0.5 rounded bg-[#FF3366]/20 text-[#FF6B8B] border border-[#FF3366]/30">KineMaster</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-amber-500/25 bg-[#0f1118] hover-lift">
+            <h3 class="text-base font-extrabold text-sky-400 mb-1">2. Graphic Design</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">High-CTR YouTube thumbnails, key visuals, promo posters, vector art, and social branding.</p>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-bold">
+              <span class="px-2 py-0.5 rounded bg-[#31A8FF]/20 text-[#64B5F6] border border-[#31A8FF]/30">Photoshop</span>
+              <span class="px-2 py-0.5 rounded bg-[#FF9A00]/20 text-[#FFA726] border border-[#FF9A00]/30">Illustrator</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-amber-500/25 bg-[#0f1118] hover-lift">
+            <h3 class="text-base font-extrabold text-emerald-400 mb-1">3. Meta Marketing</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">Scroll-stopping video ad creatives, hook scripting, audience targeting, and high-ROAS scaling.</p>
+            <div class="flex flex-wrap gap-1.5 text-[10px] font-bold">
+              <span class="px-2 py-0.5 rounded bg-[#0081FB]/20 text-[#42A5F5] border border-[#0081FB]/30">Meta Ads Manager</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ROAS Scaling</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Grid Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Pr -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#9999FF]/20 text-[#B8B8FF] border border-[#9999FF]/40 flex items-center justify-center font-black text-base mb-3">Pr</div>
+            <h4 class="font-bold text-sm">Adobe Premiere Pro</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Video Editing</span>
+            <p class="mt-2 text-xs text-slate-300">Precision multi-track timeline cuts, audio sync, color grading, and dynamic assembly.</p>
+          </div>
+
+          <!-- Ae -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#D291FF]/20 text-[#E0B0FF] border border-[#D291FF]/40 flex items-center justify-center font-black text-base mb-3">Ae</div>
+            <h4 class="font-bold text-sm">Adobe After Effects</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Motion & VFX</span>
+            <p class="mt-2 text-xs text-slate-300">Kinetic typography, 3D tracking, visual transitions, and smooth motion graphics.</p>
+          </div>
+
+          <!-- Ps -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#31A8FF]/20 text-[#64B5F6] border border-[#31A8FF]/40 flex items-center justify-center font-black text-base mb-3">Ps</div>
+            <h4 class="font-bold text-sm">Adobe Photoshop</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Graphic Design</span>
+            <p class="mt-2 text-xs text-slate-300">High-CTR YouTube thumbnails, photo composition, poster art, and color retouching.</p>
+          </div>
+
+          <!-- Ai -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#FF9A00]/20 text-[#FFA726] border border-[#FF9A00]/40 flex items-center justify-center font-black text-base mb-3">Ai</div>
+            <h4 class="font-bold text-sm">Adobe Illustrator</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Vector Art & Logos</span>
+            <p class="mt-2 text-xs text-slate-300">Vector logos, clean typography badges, brand assets, and scalable graphic banners.</p>
+          </div>
+
+          <!-- Cc -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#00F2FE]/20 text-[#4DD0E1] border border-[#00F2FE]/40 flex items-center justify-center font-black text-base mb-3">Cc</div>
+            <h4 class="font-bold text-sm">CapCut Pro</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Short-Form Video</span>
+            <p class="mt-2 text-xs text-slate-300">Viral TikToks & Reels, trending audio sync, auto captions, and rapid turnaround.</p>
+          </div>
+
+          <!-- Km -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift">
+            <div class="w-10 h-10 rounded-xl bg-[#FF3366]/20 text-[#FF6B8B] border border-[#FF3366]/40 flex items-center justify-center font-black text-base mb-3">Km</div>
+            <h4 class="font-bold text-sm">KineMaster</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">Mobile Video</span>
+            <p class="mt-2 text-xs text-slate-300">Multi-layer mobile video editing, chroma key, and fast social media delivery.</p>
+          </div>
+
+          <!-- Meta -->
+          <div class="p-5 rounded-2xl border border-amber-500/20 bg-[#0d0f15] hover-lift sm:col-span-2">
+            <div class="w-10 h-10 rounded-xl bg-[#0081FB]/20 text-[#42A5F5] border border-[#0081FB]/40 flex items-center justify-center font-black text-base mb-3">Meta</div>
+            <h4 class="font-bold text-sm">Meta Ads & Marketing</h4>
+            <span class="text-[11px] text-amber-400/80 font-semibold">ROAS Campaigns</span>
+            <p class="mt-2 text-xs text-slate-300">Targeted Facebook & Instagram video ad creatives, hook testing, and conversion scaling.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- D. VIDEO PORTFOLIO GRID (5 Videos) -->
+    <section id="video-portfolio" class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-2">
+              🎬 Curated Video Portfolio
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Selected Video Editing Works
+            </h2>
+            <p class="mt-1.5 text-sm sm:text-base text-amber-200/70 max-w-xl">
+              High-impact vertical shorts, kinetic cuts, and dynamic motion sequences engineered for engagement and sound synchronization.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-yellow-400 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-black">
+            7 Video Showcases
+          </span>
+        </div>
+
+        <!-- 4-Column Grid on xl -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          
+          <!-- Video 1 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #1</span>
+              <a href="https://www.youtube.com/shorts/1Q_cR71UGuk" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Kinetic Edit 01</h3>
+              <p class="mt-1 text-xs text-slate-400">High-energy vertical cut with beat-matched pacing.</p>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #2</span>
+              <a href="https://www.youtube.com/shorts/OJMtDsnlC6c" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Visual Flow 02</h3>
+              <p class="mt-1 text-xs text-slate-400">Dynamic transitions and sound synchronization.</p>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Short #3</span>
+              <a href="https://www.youtube.com/shorts/x48dOQQ3Xok" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Rhythm & Impact 03</h3>
+              <p class="mt-1 text-xs text-slate-400">Punchy text animations with viral retention hooks.</p>
+            </div>
+          </div>
+
+          <!-- Video 4 (Facebook Reel) -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-sky-300">Facebook Reel #1</span>
+              <a href="https://www.facebook.com/share/r/1CBad8bAtN/" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1CBad8bAtN%2F&show_text=0" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Creative Sequence 04</h3>
+              <p class="mt-1 text-xs text-slate-400">Social media reel edit with cinematic cuts.</p>
+            </div>
+          </div>
+
+          <!-- Video 5 (Facebook Reel) -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-sky-300">Facebook Reel #2</span>
+              <a href="https://www.facebook.com/share/r/1DyiotVTh8/" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1DyiotVTh8%2F&show_text=0" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Showcase Reel 05</h3>
+              <p class="mt-1 text-xs text-slate-400">Dynamic pacing tailored for social feed retention.</p>
+            </div>
+          </div>
+
+          <!-- Video 6 (YouTube Motion & Logo Animation) -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Motion #1</span>
+              <a href="https://youtu.be/4sOAjFusWDI" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/4sOAjFusWDI" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Logo Animation & Motion Graphics</h3>
+              <p class="mt-1 text-xs text-slate-400">Motion graphics, After Effects animation & kinetic visual elements.</p>
+            </div>
+          </div>
+
+          <!-- Video 7 (YouTube Motion Edit) -->
+          <div class="rounded-2xl border border-amber-500/25 bg-gradient-to-b from-[#0e1017] to-[#07080c] overflow-hidden hover-lift flex flex-col">
+            <div class="px-3.5 py-2.5 border-b border-amber-500/20 flex items-center justify-between text-xs bg-black/70">
+              <span class="font-bold text-amber-200">YouTube Motion #2</span>
+              <a href="https://youtu.be/0LxIu7gW8l0" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">Open &nearr;</a>
+            </div>
+            <div class="relative w-full aspect-[9/16] bg-black">
+              <iframe src="https://www.youtube-nocookie.com/embed/0LxIu7gW8l0" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5 flex-1 flex flex-col justify-between">
+              <h3 class="font-bold text-sm">Motion Video Edit</h3>
+              <p class="mt-1 text-xs text-slate-400">Cinematic motion design and visual effects composition.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- E. GRAPHIC WORKS (6 Posters) -->
+    <section id="graphic-works" class="py-12 sm:py-16 bg-[#06070a]/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-2">
+              🎨 Graphic Design & Thumbnails
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Promotional Posters & Visual Key Art
+            </h2>
+            <p class="mt-1.5 text-sm sm:text-base text-amber-200/70 max-w-xl">
+              Photoshop and Illustrator designs engineered for high click-through rates, clean typography, and bold visual contrast.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-yellow-400 px-3 py-1.5 rounded-lg border border-amber-500/30 bg-black">
+            6 Designs
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Graphic 1 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic1.jpg', 'Graphic Poster Concept 01', 'Promotional Banner')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic1.jpg" alt="Poster 1" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 01</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Graphic 2 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic2.jpg', 'Graphic Poster Concept 02', 'Thumbnail & Key Art')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic2.jpg" alt="Poster 2" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 02</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Graphic 3 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic3.jpg', 'Graphic Poster Concept 03', 'Social Media Graphic')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic3.jpg" alt="Poster 3" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 03</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Graphic 4 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic4.jpg', 'Graphic Poster Concept 04', 'Commercial Art')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic4.jpg" alt="Poster 4" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 04</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Graphic 5 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic5.jpg', 'Graphic Poster Concept 05', 'Event & Promo Poster')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic5.jpg" alt="Poster 5" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 05</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Graphic 6 -->
+          <div class="rounded-2xl border border-amber-500/25 bg-[#0e1017] overflow-hidden hover-lift cursor-pointer" onclick="openLightbox('graphic6.jpg', 'Graphic Poster Concept 06', 'Motion Background Art')">
+            <div class="relative aspect-[4/5] bg-black overflow-hidden">
+              <img src="graphic6.jpg" alt="Poster 6" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-4 border-t border-amber-500/20 flex items-center justify-between">
+              <h3 class="font-bold text-sm">Graphic Poster Concept 06</h3>
+              <span class="text-[11px] text-yellow-400 font-mono">View &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- F. ABOUT SECTION -->
+    <section id="about-section" class="py-12 sm:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="p-6 sm:p-12 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-[#0c0d12] via-[#090a0e] to-[#12131a] shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(245,158,11,0.1)]">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-500/10 text-yellow-400 border border-yellow-400/30 mb-3">
+            👤 About Me • Creative Journey
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-6">
+            Video Editor, Graphic Designer & Meta Marketer
+          </h2>
+          
+          <div class="p-6 sm:p-8 rounded-2xl border border-amber-500/25 bg-black/60 text-slate-200 mb-8">
+            <p class="text-base sm:text-lg leading-relaxed font-normal">
+              &ldquo;I am a passionate video editor dedicated to the art of visual storytelling. Over the past several months, I have immersed myself in learning the ins and outs of editing—practicing daily, refining my pacing, and perfecting my sound design. While I don't claim decades of industry experience, I bring fresh creativity, high-energy dedication, and a modern aesthetic to every frame. Let's create something memorable together.&rdquo;
+            </p>
+            <div class="mt-4 pt-4 border-t border-amber-500/20 flex items-center justify-between text-xs">
+              <span class="font-bold text-yellow-400 uppercase tracking-wider">— Mahmudul Hasan Masum</span>
+              <span class="text-amber-200/60 font-mono">Pr • Ae • Ps • Ai • Cc • Km • Meta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- G. CONTACT SECTION -->
+    <section id="contact-section" class="py-12 sm:py-20 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-yellow-500/10 text-yellow-400 border border-yellow-400/30">
+          ✨ Let's Build Something Memorable
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4">
+          Get in Touch & Start Collaborating
+        </h2>
+        <p class="text-base sm:text-lg max-w-xl mx-auto mb-10 text-slate-300">
+          Have a YouTube video, Short, reel, thumbnail, or Meta marketing campaign? Contact me directly via WhatsApp or email for fast turnaround.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 text-left">
+          <!-- WhatsApp Card -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-emerald-500/40 bg-gradient-to-br from-[#0a1210] via-[#090e0c] to-[#0d1714] shadow-xl hover-lift">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-black text-xl shadow-lg">💬</div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Fastest Response</span>
+            </div>
+            <h3 class="text-xl font-black mb-1">WhatsApp Chat</h3>
+            <p class="text-xs mb-4 text-slate-300">Message directly for inquiries, raw footage sharing, or project timelines.</p>
+            <div class="p-3.5 rounded-xl bg-black/60 border border-emerald-500/30 mb-4 font-mono font-bold text-sm text-emerald-300">
+              01832313750
+            </div>
+            <a
+              href="https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20collaborate!"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-lg"
+            >
+              Open WhatsApp (01832313750)
+            </a>
+          </div>
+
+          <!-- Email Card -->
+          <div class="p-6 sm:p-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-[#121008] via-[#0e0c06] to-[#17140b] shadow-xl hover-lift">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-black flex items-center justify-center font-black text-xl shadow-lg">✉️</div>
+              <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">Official Email</span>
+            </div>
+            <h3 class="text-xl font-black mb-1">Direct Email</h3>
+            <p class="text-xs mb-4 text-slate-300">Send project briefs, Drive links, and project goals.</p>
+            <div class="p-3.5 rounded-xl bg-black/60 border border-amber-500/30 mb-4 font-mono font-bold text-xs sm:text-sm text-yellow-300">
+              mahmud2026k@gmail.com
+            </div>
+            <a
+              href="mailto:mahmud2026k@gmail.com?subject=Video%20Editing%20Inquiry"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 text-black shadow-lg"
+            >
+              Send An Email
+            </a>
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-4 text-xs font-semibold">
+          <a href="https://www.facebook.com/share/r/1DyiotVTh8/" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:underline">
+            Facebook Video Reel &nearr;
+          </a>
+          <span class="text-slate-600">•</span>
+          <span class="text-slate-400">Video Editor • Graphic Designer • Meta Marketer</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+      <button onclick="closeLightbox()" class="absolute top-2 right-2 z-10 w-10 h-10 rounded-full bg-black/80 border border-amber-500/40 text-white flex items-center justify-center font-black cursor-pointer hover:bg-yellow-500 hover:text-black transition-colors">
+        ✕
+      </button>
+      <img id="lightbox-img" src="" alt="Zoomed Graphic" class="max-h-[75vh] w-auto object-contain rounded-xl border border-amber-500/30 shadow-2xl">
+      <div id="lightbox-title" class="mt-4 text-sm font-bold text-yellow-300 font-mono"></div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SCRIPTS -->
+  <script>
+    // 1. MOUSE FOLLOW & CURSOR GLOW
+    const glow = document.getElementById('cursor-glow');
+    const follower = document.getElementById('cursor-follower');
+    const dot = document.getElementById('cursor-dot');
+    let mouseX = -200, mouseY = -200;
+    let followX = -200, followY = -200;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
+      glow.style.opacity = '1';
+
+      // Check hover on interactive items
+      const isInteractive = e.target.closest('a, button, [role="button"], input, .hover-lift');
+      if (isInteractive) {
+        follower.style.width = '52px';
+        follower.style.height = '52px';
+        follower.style.borderColor = 'rgba(250, 204, 21, 0.95)';
+        follower.style.backgroundColor = 'rgba(250, 204, 21, 0.12)';
+      } else {
+        follower.style.width = '36px';
+        follower.style.height = '36px';
+        follower.style.borderColor = 'rgba(245, 158, 11, 0.7)';
+        follower.style.backgroundColor = 'rgba(245, 158, 11, 0.05)';
+      }
+    });
+
+    function updateFollower() {
+      followX += (mouseX - followX) * 0.18;
+      followY += (mouseY - followY) * 0.18;
+      follower.style.left = followX + 'px';
+      follower.style.top = followY + 'px';
+      glow.style.background = `radial-gradient(420px circle at ${Math.round(followX)}px ${Math.round(followY)}px, rgba(245, 158, 11, 0.18), rgba(251, 191, 36, 0.07) 40%, transparent 75%)`;
+      requestAnimationFrame(updateFollower);
+    }
+    requestAnimationFrame(updateFollower);
+
+    // 2. CLICK SHOCKWAVE & SPARKLE BURST ANIMATION
+    window.addEventListener('click', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      // Create shockwave ring
+      const wave = document.createElement('div');
+      wave.className = 'click-wave';
+      wave.style.left = x + 'px';
+      wave.style.top = y + 'px';
+      wave.style.width = '50px';
+      wave.style.height = '50px';
+      document.body.appendChild(wave);
+      setTimeout(() => wave.remove(), 700);
+
+      // Create sparkle particles
+      const colors = ['#facc15', '#fbbf24', '#f59e0b', '#ffffff'];
+      for (let i = 0; i < 9; i++) {
+        const p = document.createElement('div');
+        p.className = 'click-particle';
+        const angle = (i / 9) * Math.PI * 2;
+        const dist = 35 + Math.random() * 45;
+        const size = 3 + Math.random() * 4;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        p.style.boxShadow = '0 0 6px ' + p.style.backgroundColor;
+        p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+        p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 700);
+      }
+    });
+
+    // 3. THEME TOGGLE
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlEl = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        document.body.classList.remove('bg-[#07080a]', 'text-slate-100');
+        document.body.classList.add('bg-[#fafaf9]', 'text-slate-900');
+        themeIcon.textContent = '🌙';
+      } else {
+        htmlEl.classList.add('dark');
+        document.body.classList.remove('bg-[#fafaf9]', 'text-slate-900');
+        document.body.classList.add('bg-[#07080a]', 'text-slate-100');
+        themeIcon.textContent = '☀️';
+      }
+    });
+
+    // 4. LIGHTBOX
+    function openLightbox(src, title, category) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const titleEl = document.getElementById('lightbox-title');
+      img.src = src;
+      titleEl.textContent = title + ' (' + category + ')';
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
