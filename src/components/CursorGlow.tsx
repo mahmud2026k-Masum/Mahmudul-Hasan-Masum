@@ -8,7 +8,6 @@ export const CursorGlow: React.FC<CursorGlowProps> = ({ darkMode }) => {
   const [position, setPosition] = useState({ x: -400, y: -400 });
   const [followerPos, setFollowerPos] = useState({ x: -400, y: -400 });
   const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
   const mousePos = useRef({ x: -400, y: -400 });
@@ -21,15 +20,6 @@ export const CursorGlow: React.FC<CursorGlowProps> = ({ darkMode }) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       setPosition({ x: e.clientX, y: e.clientY });
       if (!isVisible) setIsVisible(true);
-
-      // Check if hovering over an interactive element
-      const target = e.target as HTMLElement | null;
-      if (target) {
-        const interactive = target.closest(
-          'a, button, [role="button"], input, select, textarea, .interactive-hover, .group'
-        );
-        setIsHovered(!!interactive);
-      }
     };
 
     const handleMouseDown = () => setIsClicking(true);
@@ -37,7 +27,6 @@ export const CursorGlow: React.FC<CursorGlowProps> = ({ darkMode }) => {
 
     const handleMouseLeave = () => {
       setIsVisible(false);
-      setIsHovered(false);
     };
 
     const handleMouseEnter = () => {
@@ -85,56 +74,39 @@ export const CursorGlow: React.FC<CursorGlowProps> = ({ darkMode }) => {
         className="absolute inset-0 transition-opacity duration-300 pointer-events-none"
         style={{
           background: darkMode
-            ? `radial-gradient(460px circle at ${position.x}px ${position.y}px, rgba(245, 158, 11, 0.18), rgba(251, 191, 36, 0.08) 35%, rgba(255, 255, 255, 0.02) 60%, transparent 80%)`
-            : `radial-gradient(380px circle at ${position.x}px ${position.y}px, rgba(234, 179, 8, 0.14), rgba(245, 158, 11, 0.05) 45%, transparent 75%)`,
+            ? `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(245, 158, 11, 0.17), rgba(251, 191, 36, 0.07) 38%, rgba(255, 255, 255, 0.015) 60%, transparent 80%)`
+            : `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(234, 179, 8, 0.15), rgba(245, 158, 11, 0.05) 45%, transparent 75%)`,
         }}
       />
 
-      {/* 2. Trailing Smooth Magnetic Golden Ring */}
+      {/* 2. Trailing Smooth Golden Ring - Slightly larger (44px) & elegant uniform size everywhere */}
       <div
-        className={`fixed pointer-events-none rounded-full transition-transform duration-150 ease-out flex items-center justify-center ${
-          isClicking
-            ? 'scale-75'
-            : isHovered
-            ? 'scale-160'
-            : 'scale-100'
-        }`}
+        className="fixed pointer-events-none rounded-full flex items-center justify-center transition-all duration-150"
         style={{
           left: `${followerPos.x}px`,
           top: `${followerPos.y}px`,
-          transform: `translate(-50%, -50%) ${
-            isClicking ? 'scale(0.75)' : isHovered ? 'scale(1.6)' : 'scale(1)'
-          }`,
-          width: '38px',
-          height: '38px',
-          border: isHovered
-            ? '2px solid rgba(250, 204, 21, 0.9)'
-            : '1.5px solid rgba(245, 158, 11, 0.65)',
-          backgroundColor: isHovered
-            ? 'rgba(250, 204, 21, 0.12)'
-            : 'rgba(245, 158, 11, 0.03)',
-          boxShadow: isHovered
-            ? '0 0 16px rgba(250, 204, 21, 0.5), inset 0 0 8px rgba(250, 204, 21, 0.2)'
-            : '0 0 8px rgba(245, 158, 11, 0.25)',
+          transform: `translate(-50%, -50%) ${isClicking ? 'scale(0.78)' : 'scale(1)'}`,
+          width: '44px',
+          height: '44px',
+          border: '1.5px solid rgba(245, 158, 11, 0.75)',
+          backgroundColor: 'rgba(245, 158, 11, 0.06)',
+          boxShadow: isClicking
+            ? '0 0 16px rgba(245, 158, 11, 0.5), inset 0 0 8px rgba(245, 158, 11, 0.2)'
+            : '0 0 12px rgba(245, 158, 11, 0.28)',
         }}
-      >
-        {isHovered && (
-          <span className="w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping opacity-75" />
-        )}
-      </div>
+      />
 
-      {/* 3. Sharp Golden Center Pointer Dot */}
+      {/* 3. Sharp Golden Center Pointer Dot - 8px crisp luminescent core */}
       <div
-        className={`fixed pointer-events-none rounded-full transition-transform duration-75 ${
-          isClicking ? 'scale-125' : isHovered ? 'scale-125 bg-white' : 'scale-100 bg-yellow-400'
-        }`}
+        className="fixed pointer-events-none rounded-full transition-transform duration-100"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-          width: '7px',
-          height: '7px',
-          boxShadow: '0 0 10px #facc15, 0 0 4px #ffffff',
+          transform: `translate(-50%, -50%) ${isClicking ? 'scale(0.75)' : 'scale(1)'}`,
+          width: '8px',
+          height: '8px',
+          backgroundColor: '#facc15',
+          boxShadow: '0 0 10px #facc15, 0 0 18px rgba(245, 158, 11, 0.5)',
         }}
       />
     </div>

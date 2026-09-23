@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Code, MessageCircle, Heart, Film } from 'lucide-react';
+import { ArrowUp, Code, MessageCircle, Heart, Film, MapPin, Facebook } from 'lucide-react';
 import { USER_INFO } from '../data';
 
 interface FooterProps {
@@ -35,10 +35,14 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
             <p className={`text-xs ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
               Video Editor & Visual Storyteller • WhatsApp: {USER_INFO.whatsappRaw}
             </p>
+            <p className={`text-xs mt-1 flex items-center gap-1.5 ${darkMode ? 'text-zinc-500' : 'text-zinc-500'}`}>
+              <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span>{USER_INFO.address}</span>
+            </p>
           </div>
 
           {/* Quick Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5">
             {/* WhatsApp Quick Chat */}
             <a
               href={USER_INFO.whatsappLink}
@@ -48,6 +52,30 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
             >
               <MessageCircle className="w-3.5 h-3.5 fill-current" />
               <span>{USER_INFO.whatsappRaw}</span>
+            </a>
+
+            {/* Facebook Profile */}
+            <a
+              href={USER_INFO.facebookProfile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 transition-colors"
+              title="Facebook Profile"
+            >
+              <Facebook className="w-3.5 h-3.5 fill-current" />
+              <span>Facebook</span>
+            </a>
+
+            {/* X (Twitter) Profile */}
+            <a
+              href={USER_INFO.xProfile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900 text-zinc-300 border border-zinc-700 hover:border-zinc-500 hover:text-white transition-colors"
+              title="X (Twitter) Profile"
+            >
+              <span className="font-bold text-xs">𝕏</span>
+              <span>X (Twitter)</span>
             </a>
 
             {/* View Standalone HTML Button */}

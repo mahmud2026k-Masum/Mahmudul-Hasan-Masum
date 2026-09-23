@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import {
   Sparkles,
   ExternalLink,
-  MessageCircle,
   Video,
-  Copy,
-  Check,
   Award,
   Palette,
   Target,
+  MapPin,
+  ArrowDown,
 } from 'lucide-react';
-import { USER_INFO, SOFTWARE_TOOLS, PORTFOLIO_VIDEOS } from '../data';
+import { USER_INFO, PORTFOLIO_VIDEOS } from '../data';
 import { VideoItem } from '../types';
 
 interface HeroSectionProps {
@@ -24,32 +23,172 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   featuredVideo,
   name,
 }) => {
-  const [copiedPhone, setCopiedPhone] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  const handleCopyWhatsApp = () => {
-    navigator.clipboard.writeText(USER_INFO.whatsappRaw);
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
-  };
+  const [isPhotoPopped, setIsPhotoPopped] = useState(false);
 
   return (
-    <section id="hero-section" className="pt-6 pb-12 sm:pt-10 sm:pb-16 transition-colors">
+    <section id="hero-section" className="pt-6 pb-12 sm:pt-8 sm:pb-16 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* TOP ITEM: Featured / Best Video in large responsive 16/9 container with golden shadow */}
-        <div id="featured-video" className="mb-10 sm:mb-14">
+        {/* 1. TOP ITEM: PROMINENT PROFILE CARD (First thing visitors see) */}
+        <div
+          id="hero-profile-card"
+          className={`mb-10 sm:mb-14 p-6 sm:p-10 rounded-3xl border transition-all relative overflow-hidden ${
+            darkMode
+              ? 'bg-[#0b0c10] border-amber-500/25 shadow-[0_15px_40px_rgba(0,0,0,0.7)]'
+              : 'bg-white border-zinc-200 shadow-xl'
+          }`}
+        >
+          {/* Subtle Ambient Gold Light Accent */}
+          <div className="absolute -top-20 -right-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-center lg:items-center gap-8 lg:gap-14 relative z-10">
+            
+            {/* PROMINENT LARGE PROFILE PICTURE */}
+            <div className="flex flex-col items-center shrink-0">
+              <div
+                className="relative group cursor-pointer"
+                onClick={() => setIsPhotoPopped(!isPhotoPopped)}
+                title="Mahmudul Hasan Masum"
+              >
+                {/* Ambient Golden Halo on Hover */}
+                <div className="absolute -inset-3 rounded-3xl bg-amber-500/25 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
+                
+                {/* Profile Avatar - Large, Bold & High-Definition */}
+                <div
+                  className={`relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl overflow-hidden ring-4 ring-amber-500/70 bg-black transition-all duration-300 select-none ${
+                    isPhotoPopped
+                      ? 'scale-105 -translate-y-2 shadow-[0_30px_60px_rgba(0,0,0,0.9),0_12px_30px_rgba(245,158,11,0.35)] ring-amber-400 ring-4'
+                      : 'shadow-2xl group-hover:scale-102 group-hover:-translate-y-1.5 group-hover:shadow-[0_25px_50px_rgba(0,0,0,0.85),0_10px_25px_rgba(245,158,11,0.25)]'
+                  }`}
+                >
+                  <img
+                    src="profile.jpg"
+                    alt={`Profile picture of ${name}`}
+                    id="author-profile-img"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="eager"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src.indexOf('/profile.jpg') === -1) {
+                        target.src = '/profile.jpg';
+                      }
+                    }}
+                  />
+                  {/* Subtle Inner Border */}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+
+            {/* GREETING & CREATOR NAME - CLEAN, MINIMALIST & SINGLE LINE DEEP GOLD */}
+            <div className="flex-1 text-center lg:text-left space-y-4 min-w-0">
+              
+              {/* Minimalist Identity Pill */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300">
+                <Award className="w-3.5 h-3.5 text-amber-500" />
+                <span>Video Editor • Graphic Designer • Meta Marketer</span>
+              </div>
+
+              {/* Creator Name - Guaranteed ONE LINE in solid deep warm gold */}
+              <div className="overflow-hidden">
+                <h2 className="text-xs font-bold tracking-widest uppercase text-zinc-400 mb-1">
+                  Creative Portfolio of
+                </h2>
+                <h1
+                  id="hero-creator-name"
+                  className="text-2xl sm:text-4xl md:text-5xl lg:text-[46px] font-black tracking-tight uppercase whitespace-nowrap text-[#f59e0b] leading-tight"
+                  style={{ color: '#f59e0b' }}
+                >
+                  {name}
+                </h1>
+              </div>
+
+              {/* 3 Discipline Badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
+                  <Video className="w-3.5 h-3.5 text-amber-500" /> Video Editing
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
+                  <Palette className="w-3.5 h-3.5 text-amber-500" /> Graphic Design
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
+                  <Target className="w-3.5 h-3.5 text-amber-500" /> Meta Marketing
+                </span>
+              </div>
+
+              <p
+                className={`text-sm sm:text-base leading-relaxed max-w-2xl ${
+                  darkMode ? 'text-zinc-300' : 'text-zinc-700'
+                }`}
+              >
+                Welcome to my creative portfolio! I edit high-retention video content, design high-CTR thumbnails and posters, and build conversion-driven Meta Ads for modern digital growth.
+              </p>
+
+              {/* Address / Location Line */}
+              <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs text-zinc-400 font-medium">
+                <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <span className="text-zinc-300">{USER_INFO.address}</span>
+              </div>
+
+              {/* Minimalist Clean Portfolio Navigation Buttons */}
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                {/* View Graphics Button (Next Section) */}
+                <a
+                  href="#graphic-works"
+                  id="hero-view-graphics-btn"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-400 text-black shadow-md transition-all active:scale-95 cursor-pointer"
+                >
+                  <Palette className="w-4 h-4 text-black" />
+                  <span>View Graphic Works</span>
+                </a>
+
+                {/* Explore Videos Button */}
+                <a
+                  href="#video-portfolio"
+                  id="hero-explore-videos-btn"
+                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold border transition-all cursor-pointer active:scale-95 ${
+                    darkMode
+                      ? 'bg-zinc-900/90 border-zinc-800 text-zinc-300 hover:border-amber-500/50 hover:text-amber-400'
+                      : 'bg-zinc-100 border-zinc-300 text-zinc-800 hover:bg-zinc-200'
+                  }`}
+                >
+                  <Video className="w-4 h-4 text-amber-500" />
+                  <span>{PORTFOLIO_VIDEOS.length} Video Edits</span>
+                </a>
+
+                {/* Direct Contact Section Jump */}
+                <a
+                  href="#contact-section"
+                  id="hero-contact-jump-btn"
+                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold border transition-all cursor-pointer active:scale-95 ${
+                    darkMode
+                      ? 'bg-zinc-900/50 border-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700'
+                      : 'bg-zinc-100/80 border-zinc-300 text-zinc-700 hover:bg-zinc-200'
+                  }`}
+                >
+                  <ArrowDown className="w-4 h-4 text-amber-400" />
+                  <span>Get in Touch</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* 2. FEATURED VIDEO SHOWCASE (Positioned right below Profile Card) */}
+        <div id="featured-video" className="mb-4">
           <div className="flex items-center justify-between mb-3 px-1">
             <div className="flex items-center gap-2">
               <span
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                   darkMode
-                    ? 'bg-yellow-500/15 text-yellow-400 border border-yellow-400/40 shadow-sm shadow-yellow-500/10'
-                    : 'bg-amber-50 text-amber-800 border border-amber-300'
+                    ? 'bg-zinc-900 text-amber-400 border border-zinc-800'
+                    : 'bg-zinc-100 text-zinc-800 border border-zinc-300'
                 }`}
               >
-                <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                Featured Trailer • Best Work
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                Featured Trailer • Best Reel
               </span>
             </div>
             
@@ -58,10 +197,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               id="watch-featured-source-btn"
-              className={`inline-flex items-center gap-1.5 text-xs font-bold transition-colors cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                 darkMode
-                  ? 'text-yellow-400 hover:text-yellow-300 hover:underline'
-                  : 'text-amber-800 hover:text-amber-900'
+                  ? 'text-zinc-400 hover:text-amber-400'
+                  : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
               <span>{featuredVideo.platform === 'youtube' ? 'Watch on YouTube' : 'Watch on Facebook'}</span>
@@ -69,16 +208,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </a>
           </div>
 
-          {/* 16:9 Responsive Video Container with Subtle Gold-tinted Shadow */}
+          {/* 16:9 Responsive Video Container */}
           <div
             id="featured-video-container"
             className={`relative w-full aspect-video rounded-2xl overflow-hidden border transition-all duration-300 group ${
               darkMode
-                ? 'bg-black border-amber-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(245,158,11,0.15)]'
-                : 'bg-slate-100 border-amber-200 shadow-xl shadow-amber-900/10'
+                ? 'bg-black border-zinc-800 shadow-[0_10px_35px_rgba(0,0,0,0.8)]'
+                : 'bg-zinc-100 border-zinc-300 shadow-lg'
             }`}
           >
-            {/* Embedded Video Player (YouTube or Facebook) */}
+            {/* Embedded Video Player */}
             <iframe
               src={featuredVideo.embedUrl}
               title={featuredVideo.title}
@@ -89,242 +228,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onLoad={() => setIsVideoLoaded(true)}
             />
 
-            {/* Loading / Fallback Indicator */}
+            {/* Loading Indicator */}
             {!isVideoLoaded && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/90 text-yellow-300 z-0">
-                <div className="w-12 h-12 rounded-full border-3 border-yellow-400 border-t-transparent animate-spin" />
-                <p className="text-xs tracking-widest uppercase font-mono text-yellow-400/80">
-                  Loading Best Work Reel...
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/90 text-amber-400 z-0">
+                <div className="w-10 h-10 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+                <p className="text-xs tracking-widest uppercase font-mono text-zinc-400">
+                  Loading Reel...
                 </p>
               </div>
             )}
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
-            <span className={darkMode ? 'text-amber-200/70' : 'text-slate-600'}>
-              🎬 Dynamic trailer cut — sound design, rhythmic pacing, & visual sequencing.
+          <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
+            <span className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+              Dynamic trailer cut — sound design, pacing & visual storytelling.
             </span>
-            <span className={`font-mono text-[11px] font-bold ${darkMode ? 'text-yellow-400' : 'text-amber-700'}`}>
+            <span className={`font-mono text-[11px] font-semibold ${darkMode ? 'text-amber-400/90' : 'text-zinc-700'}`}>
               Aspect Ratio 16:9 • High Definition
             </span>
-          </div>
-        </div>
-
-        {/* SHORT GREETING & PROFILE PICTURE (Placed right below featured video with WhatsApp) */}
-        <div
-          id="short-greeting-section"
-          className={`p-6 sm:p-10 rounded-3xl border transition-all relative overflow-hidden ${
-            darkMode
-              ? 'bg-gradient-to-br from-[#0c0d12] via-[#090a0e] to-[#12131a] border-amber-500/30 shadow-[0_15px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(234,179,8,0.1)]'
-              : 'bg-white border-amber-200 shadow-xl shadow-amber-900/5'
-          }`}
-        >
-          {/* Subtle Ambient Gold Light Beam */}
-          <div className="absolute -top-24 -right-24 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-10 relative z-10">
-            
-            {/* ENHANCED PROFILE PICTURE WITH GOLD AURA & WHATSAPP CARD */}
-            <div className="flex flex-col items-center shrink-0">
-              <div className="relative group">
-                {/* Glowing Golden Ring Backlight */}
-                <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 opacity-75 blur-md group-hover:opacity-100 transition duration-500" />
-                
-                {/* Profile Avatar using exact "profile.jpg" */}
-                <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden ring-3 ring-yellow-400 shadow-2xl bg-black">
-                  <img
-                    src="profile.jpg"
-                    alt={`Profile picture of ${name}`}
-                    id="author-profile-img"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-108 transition-transform duration-700"
-                    loading="eager"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      if (target.src.indexOf('/profile.jpg') === -1) {
-                        target.src = '/profile.jpg';
-                      }
-                    }}
-                  />
-                  {/* Subtle Inner Vignette */}
-                  <div className="absolute inset-0 ring-1 ring-inset ring-black/40 pointer-events-none" />
-                </div>
-
-                {/* Available for Projects Badge */}
-                <div
-                  id="profile-status-badge"
-                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-extrabold flex items-center gap-1.5 shadow-lg border bg-black text-yellow-300 border-yellow-400/60 whitespace-nowrap"
-                  title="Available for video editing & design commissions"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400" />
-                  AVAILABLE FOR COMMISSIONS
-                </div>
-              </div>
-
-              {/* WHATSAPP CARD PROMINENTLY UNDER PROFILE */}
-              <div className="mt-7 w-full max-w-[260px] p-3 rounded-2xl border border-amber-500/30 bg-black/70 text-center shadow-lg hover-lift">
-                <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-center gap-1.5 mb-1.5">
-                  <MessageCircle className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
-                  WhatsApp Direct Contact
-                </div>
-                
-                {/* Click to Chat WhatsApp button */}
-                <a
-                  href={USER_INFO.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="profile-whatsapp-chat-btn"
-                  className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-md transition-all active:scale-95 cursor-pointer"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>{USER_INFO.whatsappRaw}</span>
-                </a>
-
-                {/* Quick Copy Link */}
-                <div className="mt-2 flex items-center justify-center gap-2 text-[11px]">
-                  <button
-                    type="button"
-                    onClick={handleCopyWhatsApp}
-                    className="text-amber-300/80 hover:text-yellow-400 font-semibold inline-flex items-center gap-1 transition-colors cursor-pointer"
-                  >
-                    {copiedPhone ? (
-                      <>
-                        <Check className="w-3 h-3 text-emerald-400" />
-                        <span className="text-emerald-400">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>Copy Number</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* MINI QUICK SOFTWARE TOOL ICONS BADGE BAR */}
-              <div className="mt-3.5 flex items-center justify-center gap-1.5 flex-wrap max-w-[260px]">
-                {SOFTWARE_TOOLS.slice(0, 6).map((tool) => (
-                  <span
-                    key={tool.id}
-                    title={`${tool.name} • ${tool.roleTag}`}
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black border transition-transform hover:scale-125 cursor-pointer ${tool.badgeBg} ${tool.badgeColor} ${tool.accentBorder}`}
-                  >
-                    {tool.shortName}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* GREETING & CREATOR NAME - PROMINENT, BOLD & MULTI-DISCIPLINE IDENTITY */}
-            <div className="flex-1 text-center lg:text-left space-y-4">
-              
-              {/* Pro Multi-Discipline Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
-                <Award className="w-3.5 h-3.5" />
-                <span>Video Editor • Graphic Designer • Meta Marketer</span>
-              </div>
-
-              {/* Creator Name - Large, Bold & Gold Typography */}
-              <div>
-                <h2 className="text-sm font-bold tracking-widest uppercase text-amber-300/70 mb-1">
-                  Creative Portfolio of
-                </h2>
-                <h1
-                  id="hero-creator-name"
-                  className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(245,158,11,0.25)] leading-tight"
-                >
-                  {name}
-                </h1>
-              </div>
-
-              {/* 3 Discipline Badges in Hero */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-black bg-yellow-400/15 text-yellow-300 border border-yellow-400/40">
-                  <Video className="w-3.5 h-3.5" /> Video Editing
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-black bg-sky-400/15 text-sky-300 border border-sky-400/40">
-                  <Palette className="w-3.5 h-3.5" /> Graphic Design
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-black bg-emerald-400/15 text-emerald-300 border border-emerald-400/40">
-                  <Target className="w-3.5 h-3.5" /> Meta Marketing
-                </span>
-              </div>
-
-              <p
-                className={`text-base sm:text-lg leading-relaxed max-w-2xl ${
-                  darkMode ? 'text-slate-300' : 'text-slate-700'
-                }`}
-              >
-                Welcome to my creative portfolio! I edit high-retention video content (Premiere Pro, After Effects, CapCut, KineMaster), design high-CTR thumbnails and posters (Photoshop, Illustrator), and develop conversion-driven Meta Ads for digital growth.
-              </p>
-
-              {/* Primary Action Buttons with Click & Hover animations */}
-              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
-                
-                {/* WhatsApp Primary Contact Button */}
-                <a
-                  href={USER_INFO.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="hero-whatsapp-main-btn"
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl text-sm font-extrabold transition-all bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/25 border border-emerald-300/30 cursor-pointer active:scale-95 hover-lift"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Chat on WhatsApp ({USER_INFO.whatsappRaw})</span>
-                </a>
-
-                {/* Creative Software Stack Anchor */}
-                <a
-                  href="#creative-stack"
-                  id="hero-stack-btn"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-extrabold transition-all bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 hover:brightness-110 text-black shadow-lg shadow-amber-500/25 cursor-pointer active:scale-95 hover-lift"
-                >
-                  <Sparkles className="w-4 h-4 text-black" />
-                  <span>View Software Stack</span>
-                </a>
-
-                {/* Explore Videos Button */}
-                <a
-                  href="#video-portfolio"
-                  id="hero-explore-videos-btn"
-                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-bold border transition-all cursor-pointer active:scale-95 hover-lift ${
-                    darkMode
-                      ? 'bg-black/60 border-amber-500/30 text-amber-300 hover:bg-amber-500/10 hover:border-amber-400'
-                      : 'bg-slate-50 border-amber-300 text-amber-900 hover:bg-amber-50'
-                  }`}
-                >
-                  <Video className="w-4 h-4" />
-                  <span>{PORTFOLIO_VIDEOS.length} Video Edits</span>
-                </a>
-              </div>
-
-              {/* Software Tool Monograms Strip */}
-              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-semibold">
-                <span className="text-[11px] text-amber-300/70 uppercase tracking-wider font-mono">Tools:</span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#9999FF]/30 bg-[#9999FF]/10 text-[#B8B8FF] font-bold">
-                  Premiere Pro
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#D291FF]/30 bg-[#D291FF]/10 text-[#E0B0FF] font-bold">
-                  After Effects
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#31A8FF]/30 bg-[#31A8FF]/10 text-[#64B5F6] font-bold">
-                  Photoshop
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#FF9A00]/30 bg-[#FF9A00]/10 text-[#FFA726] font-bold">
-                  Illustrator
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#00F2FE]/30 bg-[#00F2FE]/10 text-[#4DD0E1] font-bold">
-                  CapCut
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#FF3366]/30 bg-[#FF3366]/10 text-[#FF6B8B] font-bold">
-                  KineMaster
-                </span>
-                <span className="px-2.5 py-1 rounded-lg border border-[#0081FB]/30 bg-[#0081FB]/10 text-[#42A5F5] font-bold">
-                  Meta Ads
-                </span>
-              </div>
-
-            </div>
           </div>
         </div>
 
@@ -332,3 +253,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     </section>
   );
 };
+

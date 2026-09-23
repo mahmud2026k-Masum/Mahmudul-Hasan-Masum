@@ -9,7 +9,11 @@ export const USER_INFO = {
   whatsappRaw: '01832313750',
   whatsappFormatted: '+880 1832-313750',
   whatsappLink: 'https://wa.me/8801832313750?text=Hi%20Masum,%20I%20saw%20your%20portfolio%20(Video%20Editing,%20Graphic%20Design,%20Meta%20Marketing)%20and%20would%20like%20to%20collaborate!',
-  facebookProfile: 'https://www.facebook.com/share/r/1DyiotVTh8/',
+  facebookProfile: 'https://www.facebook.com/profile.php?id=61577322251551',
+  xProfile: 'https://x.com/home?lang=en',
+  twitterProfile: 'https://x.com/home?lang=en',
+  address: 'House-364, Satarkul Road, Uttar Badda, Dhaka-12',
+  addressShort: 'Uttar Badda, Dhaka-12',
   honestBio:
     "I am a versatile creative professional specializing in high-retention Video Editing, Graphic Design, and Meta Ads Marketing. Over the past several months, I have dedicated myself to mastering visual storytelling—crafting dynamic video cuts in Premiere Pro, After Effects, and CapCut, designing high-converting thumbnails and posters in Photoshop and Illustrator, and scaling digital brands through targeted Meta ad creatives. I bring fresh creativity, rapid execution, and a modern aesthetic to every project. Let's create something memorable together.",
   skills: [
@@ -149,24 +153,6 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
   },
   {
     id: 'video-4',
-    title: 'Creative Sequence 04',
-    tag: 'Reel Highlight',
-    sourceUrl: 'https://www.facebook.com/share/r/1CBad8bAtN/',
-    embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1CBad8bAtN%2F&show_text=0',
-    platform: 'facebook',
-    aspectRatio: '9/16',
-  },
-  {
-    id: 'video-5',
-    title: 'Showcase Reel 05',
-    tag: 'Facebook Reel Cut',
-    sourceUrl: 'https://www.facebook.com/share/r/1DyiotVTh8/',
-    embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1DyiotVTh8%2F&show_text=0',
-    platform: 'facebook',
-    aspectRatio: '9/16',
-  },
-  {
-    id: 'video-6',
     title: 'Logo Animation & Motion Graphics',
     tag: 'After Effects Motion',
     sourceUrl: 'https://youtu.be/4sOAjFusWDI',
@@ -175,7 +161,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
     aspectRatio: '16/9',
   },
   {
-    id: 'video-7',
+    id: 'video-5',
     title: 'Motion Video Edit',
     tag: 'Motion & VFX',
     sourceUrl: 'https://youtu.be/0LxIu7gW8l0',

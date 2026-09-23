@@ -6,32 +6,105 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  a, button {
+    touch-action: manipulation;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-@keyframes clickWave {
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes clickWavePrimary {
   0% {
-    transform: translate(-50%, -50%) scale(0.2);
-    opacity: 1;
-    border-width: 3px;
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0.95;
+    border-width: 2px;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.7;
   }
   100% {
-    transform: translate(-50%, -50%) scale(2.8);
+    transform: translate(-50%, -50%) scale(2.6);
     opacity: 0;
     border-width: 1px;
+  }
+}
+
+@keyframes clickWaveEcho {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0.8;
+    border-width: 1.5px;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.9);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes clickCoreBloom {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
   }
 }
 
 @keyframes particleBurst {
   0% {
     transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(var(--tx, 22px), var(--ty, -22px)) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes diamondSparkle {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -50%) translate(calc(var(--tx, 20px) * 0.4), calc(var(--ty, -20px) * 0.4)) scale(1.2) rotate(45deg);
     opacity: 1;
   }
   100% {
-    transform: translate(var(--tx, 30px), var(--ty, -30px)) scale(0) rotate(180deg);
+    transform: translate(-50%, -50%) translate(var(--tx, 28px), var(--ty, -28px)) scale(0) rotate(135deg);
     opacity: 0;
   }
 }
@@ -45,12 +118,24 @@
   }
 }
 
-.animate-click-wave {
-  animation: clickWave 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+.animate-click-wave-primary {
+  animation: clickWavePrimary 0.58s cubic-bezier(0.12, 0.9, 0.28, 1) forwards;
+}
+
+.animate-click-wave-echo {
+  animation: clickWaveEcho 0.65s cubic-bezier(0.15, 0.85, 0.35, 1) 0.05s forwards;
+}
+
+.animate-click-core-bloom {
+  animation: clickCoreBloom 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-particle {
-  animation: particleBurst 0.7s cubic-bezier(0.12, 0.85, 0.35, 1) forwards;
+  animation: particleBurst 0.62s cubic-bezier(0.15, 0.88, 0.32, 1) forwards;
+}
+
+.animate-diamond-sparkle {
+  animation: diamondSparkle 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-badge-float {

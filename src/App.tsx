@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LightboxModal } from './components/LightboxModal';
 import { HtmlExportModal } from './components/HtmlExportModal';
+import { SpotlightSearchModal } from './components/SpotlightSearchModal';
 import { CursorGlow } from './components/CursorGlow';
 import { ClickSparkleEffect } from './components/ClickSparkleEffect';
 import { USER_INFO, FEATURED_VIDEO, PORTFOLIO_VIDEOS, GRAPHIC_WORKS } from './data';
@@ -32,6 +33,21 @@ export default function App() {
 
   // Standalone HTML export modal state
   const [isHtmlModalOpen, setIsHtmlModalOpen] = useState<boolean>(false);
+
+  // Instant Spotlight Search modal state
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
+  // Global keyboard shortcut: Ctrl+K or Cmd+K to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Sync theme with document element and localStorage
   useEffect(() => {
@@ -79,42 +95,43 @@ export default function App() {
       <Navbar
         darkMode={darkMode}
         onToggleTheme={handleToggleTheme}
+        onOpenSearch={() => setIsSearchOpen(true)}
         name={USER_INFO.name}
       />
 
-      {/* MAIN CONTENT (Strict Top to Bottom Structure) */}
+      {/* MAIN CONTENT (Strict Top to Bottom Structure as Requested) */}
       <main id="top" className="relative z-10">
-        {/* B. HERO SECTION (Feature Video & Short Greeting with profile.jpg & WhatsApp card) */}
+        {/* 1. HERO SECTION (Profile Card FIRST at top, then Featured Trailer) */}
         <HeroSection
           darkMode={darkMode}
           featuredVideo={FEATURED_VIDEO}
           name={USER_INFO.name}
         />
 
-        {/* C. CREATIVE SOFTWARE & 3-DISCIPLINE STACK (Premiere Pro, After Effects, Photoshop, Illustrator, CapCut, KineMaster, Meta Ads) */}
-        <SoftwareStackSection
-          darkMode={darkMode}
-        />
-
-        {/* D. VIDEO PORTFOLIO GRID (5 video editing works) */}
-        <VideoGrid
-          darkMode={darkMode}
-          videos={PORTFOLIO_VIDEOS}
-        />
-
-        {/* E. GRAPHIC WORK SECTION (6 image cards graphic1.jpg - graphic6.jpg) */}
+        {/* 2. GRAPHIC & POSTER DESIGNS (Graphics & Designs right after Profile) */}
         <GraphicSection
           darkMode={darkMode}
           graphics={GRAPHIC_WORKS}
           onOpenLightbox={handleOpenLightbox}
         />
 
-        {/* F. DETAILED ABOUT ME (BIO) SECTION (Below Graphics Section) */}
+        {/* 3. VIDEO EDITING PORTFOLIO GRID (7 selected video editing showcases) */}
+        <VideoGrid
+          darkMode={darkMode}
+          videos={PORTFOLIO_VIDEOS}
+        />
+
+        {/* 4. CREATIVE TOOLS & SKILLS SECTION (Software Stack & Skills) */}
+        <SoftwareStackSection
+          darkMode={darkMode}
+        />
+
+        {/* 5. DETAILED ABOUT ME SECTION */}
         <AboutSection
           darkMode={darkMode}
         />
 
-        {/* G. GET IN TOUCH SECTION (Email, WhatsApp: 01832313750, Social Links) */}
+        {/* 6. GET IN TOUCH & DIRECT CONTACT SECTION */}
         <ContactSection
           darkMode={darkMode}
         />
@@ -140,6 +157,14 @@ export default function App() {
         isOpen={isHtmlModalOpen}
         onClose={() => setIsHtmlModalOpen(false)}
         htmlContent={STANDALONE_HTML}
+      />
+
+      {/* INSTANT SPOTLIGHT SEARCH & JUMP NAVIGATOR */}
+      <SpotlightSearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        darkMode={darkMode}
+        onOpenGraphicLightbox={handleOpenLightbox}
       />
     </div>
   );
