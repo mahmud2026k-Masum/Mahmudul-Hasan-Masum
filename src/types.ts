@@ -1,3 +1,5 @@
+export type Language = 'en' | 'bn';
+
 export interface VideoItem {
   id: string;
   title: string;

@@ -1,13 +1,18 @@
 import React from 'react';
 import { ArrowUp, Code, MessageCircle, Heart, Film, MapPin, Facebook } from 'lucide-react';
 import { USER_INFO } from '../data';
+import { Language } from '../types';
+import { translations } from '../translations';
 
 interface FooterProps {
   darkMode: boolean;
   onOpenHtmlModal: () => void;
+  lang: Language;
 }
 
-export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => {
+export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal, lang }) => {
+  const t = translations[lang];
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -29,15 +34,15 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
             <div className="flex items-center gap-2 mb-1">
               <Film className="w-4 h-4 text-yellow-400" />
               <span className="font-extrabold text-sm uppercase tracking-wider text-yellow-400">
-                {USER_INFO.name}
+                {lang === 'bn' ? t.hero.creatorName : USER_INFO.name}
               </span>
             </div>
             <p className={`text-xs ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              Video Editor & Visual Storyteller • WhatsApp: {USER_INFO.whatsappRaw}
+              {t.footer.roleTagline} • WhatsApp: {USER_INFO.whatsappRaw}
             </p>
             <p className={`text-xs mt-1 flex items-center gap-1.5 ${darkMode ? 'text-zinc-500' : 'text-zinc-500'}`}>
               <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>{USER_INFO.address}</span>
+              <span>{t.hero.address}</span>
             </p>
           </div>
 
@@ -90,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
               }`}
             >
               <Code className="w-3.5 h-3.5 text-yellow-400" />
-              <span>Standalone HTML</span>
+              <span>{t.footer.standaloneHtmlBtn}</span>
             </button>
 
             {/* Back to Top */}
@@ -103,8 +108,8 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
                   ? 'bg-black/60 border-amber-500/30 text-yellow-300 hover:bg-amber-500/10'
                   : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
               }`}
-              title="Back to top"
-              aria-label="Back to top"
+              title={t.footer.backToTop}
+              aria-label={t.footer.backToTop}
             >
               <ArrowUp className="w-4 h-4" />
             </button>
@@ -113,9 +118,9 @@ export const Footer: React.FC<FooterProps> = ({ darkMode, onOpenHtmlModal }) => 
 
         {/* Sub-footer Copyright */}
         <div className="mt-8 pt-6 border-t border-amber-500/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 text-center">
-          <p>© {new Date().getFullYear()} Mahmudul Hasan Masum. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {lang === 'bn' ? t.hero.creatorName : USER_INFO.name}. {t.footer.rightsReserved}</p>
           <p className="flex items-center gap-1">
-            Crafted for high-retention video content & storytelling
+            {t.footer.craftedFor}
           </p>
         </div>
       </div>

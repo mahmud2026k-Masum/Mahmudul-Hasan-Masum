@@ -12,11 +12,38 @@ import { HtmlExportModal } from './components/HtmlExportModal';
 import { SpotlightSearchModal } from './components/SpotlightSearchModal';
 import { CursorGlow } from './components/CursorGlow';
 import { ClickSparkleEffect } from './components/ClickSparkleEffect';
+import { FixedBackgroundPortrait } from './components/FixedBackgroundPortrait';
 import { USER_INFO, FEATURED_VIDEO, PORTFOLIO_VIDEOS, GRAPHIC_WORKS } from './data';
-import { GraphicItem } from './types';
+import { GraphicItem, Language } from './types';
 import { STANDALONE_HTML } from './portfolioHtmlString';
 
 export default function App() {
+  // Language state: English & Bengali bilingual support
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('portfolio_lang');
+      if (saved === 'bn' || saved === 'en') return saved;
+    }
+    return 'bn'; // Default to Bengali as requested by user, easily switchable to English
+  });
+
+  const handleToggleLang = () => {
+    setLang((prev) => {
+      const nextLang: Language = prev === 'en' ? 'bn' : 'en';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('portfolio_lang', nextLang);
+      }
+      return nextLang;
+    });
+  };
+
+  const handleSelectLang = (selectedLang: Language) => {
+    setLang(selectedLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('portfolio_lang', selectedLang);
+    }
+  };
+
   // Theme state: dark mode by default on load with black & gold palette
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
@@ -85,10 +112,13 @@ export default function App() {
         darkMode ? 'bg-[#07080a] text-slate-100' : 'bg-[#fafaf9] text-slate-900'
       }`}
     >
-      {/* 1. INTERACTIVE DYNAMIC CURSOR GLOW (Soft gold ambient spotlight & magnetic follower ring) */}
+      {/* 1. FIXED BACKGROUND PORTRAIT (Floating ambient minimalist photo pinned to viewport behind creative works) */}
+      <FixedBackgroundPortrait darkMode={darkMode} />
+
+      {/* 2. INTERACTIVE DYNAMIC CURSOR GLOW (Soft gold ambient spotlight & magnetic follower ring) */}
       <CursorGlow darkMode={darkMode} />
 
-      {/* 2. INTERACTIVE CLICK SPARKLE & SHOCKWAVE BURST ON ANY CLICK */}
+      {/* 3. INTERACTIVE CLICK SPARKLE & SHOCKWAVE BURST ON ANY CLICK */}
       <ClickSparkleEffect darkMode={darkMode} />
 
       {/* A. NAVIGATION BAR */}
@@ -97,6 +127,9 @@ export default function App() {
         onToggleTheme={handleToggleTheme}
         onOpenSearch={() => setIsSearchOpen(true)}
         name={USER_INFO.name}
+        lang={lang}
+        onToggleLang={handleToggleLang}
+        onSelectLang={handleSelectLang}
       />
 
       {/* MAIN CONTENT (Strict Top to Bottom Structure as Requested) */}
@@ -106,6 +139,7 @@ export default function App() {
           darkMode={darkMode}
           featuredVideo={FEATURED_VIDEO}
           name={USER_INFO.name}
+          lang={lang}
         />
 
         {/* 2. GRAPHIC & POSTER DESIGNS (Graphics & Designs right after Profile) */}
@@ -113,27 +147,32 @@ export default function App() {
           darkMode={darkMode}
           graphics={GRAPHIC_WORKS}
           onOpenLightbox={handleOpenLightbox}
+          lang={lang}
         />
 
         {/* 3. VIDEO EDITING PORTFOLIO GRID (7 selected video editing showcases) */}
         <VideoGrid
           darkMode={darkMode}
           videos={PORTFOLIO_VIDEOS}
+          lang={lang}
         />
 
         {/* 4. CREATIVE TOOLS & SKILLS SECTION (Software Stack & Skills) */}
         <SoftwareStackSection
           darkMode={darkMode}
+          lang={lang}
         />
 
         {/* 5. DETAILED ABOUT ME SECTION */}
         <AboutSection
           darkMode={darkMode}
+          lang={lang}
         />
 
         {/* 6. GET IN TOUCH & DIRECT CONTACT SECTION */}
         <ContactSection
           darkMode={darkMode}
+          lang={lang}
         />
       </main>
 
@@ -141,6 +180,7 @@ export default function App() {
       <Footer
         darkMode={darkMode}
         onOpenHtmlModal={() => setIsHtmlModalOpen(true)}
+        lang={lang}
       />
 
       {/* IMAGE LIGHTBOX MODAL */}
@@ -165,6 +205,7 @@ export default function App() {
         onClose={() => setIsSearchOpen(false)}
         darkMode={darkMode}
         onOpenGraphicLightbox={handleOpenLightbox}
+        lang={lang}
       />
     </div>
   );

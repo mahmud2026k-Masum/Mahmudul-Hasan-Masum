@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { Sparkles, Video, Palette, Target, Layers, CheckCircle2 } from 'lucide-react';
 import { SOFTWARE_TOOLS } from '../data';
-import { SoftwareTool } from '../types';
+import { SoftwareTool, Language } from '../types';
+import { translations } from '../translations';
 
 interface SoftwareStackSectionProps {
   darkMode: boolean;
+  lang: Language;
 }
 
-export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ darkMode }) => {
+export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ darkMode, lang }) => {
+  const t = translations[lang];
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [activeTool, setActiveTool] = useState<SoftwareTool | null>(null);
 
-  const categories = ['All', 'Video Editing', 'Motion & VFX', 'Graphic Design', 'Digital Marketing'];
+  const categories = [
+    { key: 'All', labelEn: 'All', labelBn: 'সকল' },
+    { key: 'Video Editing', labelEn: 'Video Editing', labelBn: 'ভিডিও এডিটিং' },
+    { key: 'Motion & VFX', labelEn: 'Motion & VFX', labelBn: 'মোশন ও ভিএফএক্স' },
+    { key: 'Graphic Design', labelEn: 'Graphic Design', labelBn: 'গ্রাফিক ডিজাইন' },
+    { key: 'Digital Marketing', labelEn: 'Digital Marketing', labelBn: 'ডিজিটাল মার্কেটিং' },
+  ];
 
   const filteredTools =
     selectedCategory === 'All'
@@ -20,10 +29,16 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
 
   const SKILL_SETS = [
     {
-      title: 'Video Editing',
+      title: lang === 'bn' ? 'ভিডিও এডিটিং' : 'Video Editing',
       icon: Video,
-      summary: 'High-Retention Visual Storytelling',
-      skills: [
+      summary: lang === 'bn' ? 'হাই-রিটেনশন ভিজুয়াল স্টোরিটেলিং' : 'High-Retention Visual Storytelling',
+      skills: lang === 'bn' ? [
+        'রিথমিক ও ডায়নামিক পেসিং কাট',
+        'সাউন্ড ডিজাইন ও অডিও লেয়ারিং',
+        'মোশন গ্রাফিক্স ও ট্রানজিশন',
+        'ডায়নামিক ক্যাপশন ও সাবটাইটেল',
+        'কালার কারেকশন ও কালার গ্রেডিং',
+      ] : [
         'Pacing & Rhythmic Cuts',
         'Sound Design & Audio Layering',
         'Motion Graphics & Transitions',
@@ -32,10 +47,16 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
       ],
     },
     {
-      title: 'Graphic Design',
+      title: lang === 'bn' ? 'গ্রাফিক ডিজাইন' : 'Graphic Design',
       icon: Palette,
-      summary: 'High-CTR Thumbnails & Poster Art',
-      skills: [
+      summary: lang === 'bn' ? 'হাই-সিটিআর থাম্বনেইল ও পোস্টার আর্ট' : 'High-CTR Thumbnails & Poster Art',
+      skills: lang === 'bn' ? [
+        'ইউটিউব থাম্বনেইল সাইকোলজি',
+        'পোস্টার লেআউট ও কম্পোজিশন',
+        'টাইপোগ্রাফি ও কালার কনট্রাস্ট',
+        'ভেক্টর আর্ট ও ব্র্যান্ড লোগো',
+        'সোশ্যাল মিডিয়া ডিজাইন কিট',
+      ] : [
         'YouTube Thumbnail Psychology',
         'Poster Layout & Composition',
         'Typography & Contrast',
@@ -44,10 +65,16 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
       ],
     },
     {
-      title: 'Meta Marketing',
+      title: lang === 'bn' ? 'মেটা মার্কেটিং' : 'Meta Marketing',
       icon: Target,
-      summary: 'Performance Advertising & ROAS',
-      skills: [
+      summary: lang === 'bn' ? 'হাই-কনভার্সন পারফরম্যান্স বিজ্ঞাপন' : 'Performance Advertising & ROAS',
+      skills: lang === 'bn' ? [
+        'হুক-ফোকাসড ভিডিও অ্যাড ক্রিয়েটিভ',
+        'ক্যাম্পেইন স্ট্রাকচার ও স্কেলিং',
+        'টার্গেটেড অডিয়েন্স স্ট্র্যাটেজি',
+        'A/B ক্রিয়েটিভ স্প্লিট টেস্টিং',
+        'কনভার্সন রেট অপটিমাইজেশন',
+      ] : [
         'Hook-Focused Ad Creative',
         'Campaign Structuring & Scaling',
         'Audience Targeting Strategy',
@@ -65,11 +92,11 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
         <div className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Core Competencies & Stack</span>
+            <span>{t.software.tag}</span>
           </div>
           
           <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#f59e0b]">
-            Skills & Software Tools
+            {t.software.heading}
           </h2>
           
           <p
@@ -77,7 +104,7 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
               darkMode ? 'text-zinc-400' : 'text-zinc-600'
             }`}
           >
-            Practical expertise across video post-production, visual key art, and data-driven Meta ad campaigns.
+            {t.software.subtitle}
           </p>
         </div>
 
@@ -124,25 +151,25 @@ export const SoftwareStackSection: React.FC<SoftwareStackSectionProps> = ({ dark
             <div className="flex items-center gap-2">
               <Layers className="w-4 h-4 text-amber-500" />
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
-                Software Arsenal ({filteredTools.length})
+                {lang === 'bn' ? 'সফটওয়্যার টুলকিট' : 'Software Arsenal'} ({filteredTools.length})
               </span>
             </div>
 
             <div className="flex flex-wrap gap-1.5">
               {categories.map((cat) => (
                 <button
-                  key={cat}
+                  key={cat.key}
                   type="button"
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => setSelectedCategory(cat.key)}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedCategory === cat
+                    selectedCategory === cat.key
                       ? 'bg-amber-500 text-black shadow-sm'
                       : darkMode
-                      ? 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
-                      : 'bg-zinc-100 text-zinc-700 hover:text-zinc-900 border border-zinc-300'
+                      ? 'bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800'
+                      : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200 border border-zinc-300'
                   }`}
                 >
-                  {cat}
+                  {lang === 'bn' ? cat.labelBn : cat.labelEn}
                 </button>
               ))}
             </div>

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Mail, MessageCircle, Copy, Check, ExternalLink, Send, Sparkles, MapPin, Facebook, Twitter } from 'lucide-react';
 import { USER_INFO } from '../data';
+import { Language } from '../types';
+import { translations } from '../translations';
 
 interface ContactSectionProps {
   darkMode: boolean;
+  lang: Language;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode, lang }) => {
+  const t = translations[lang];
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState(false);
@@ -36,11 +40,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
         {/* Header */}
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-yellow-500/10 text-yellow-400 border border-yellow-400/30">
           <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-          Let&apos;s Build Something Memorable
+          {t.contact.tag}
         </div>
 
         <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
-          Get in Touch & Start Collaborating
+          {t.contact.heading}
         </h2>
 
         <p
@@ -48,7 +52,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
             darkMode ? 'text-slate-300' : 'text-slate-600'
           }`}
         >
-          Have a YouTube video, Short/Reel, graphic design poster, or Meta Ad campaign? Contact me directly via WhatsApp, email, or visit my studio for rapid turnaround.
+          {t.contact.subtitle}
         </p>
 
         {/* Contact Action Cards - 3 Pillar Grid */}
@@ -68,13 +72,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   <MessageCircle className="w-5 h-5 fill-current" />
                 </div>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase tracking-wider">
-                  Fastest
+                  {lang === 'bn' ? 'সবচেয়ে দ্রুত' : 'Fastest'}
                 </span>
               </div>
 
-              <h3 className="text-lg font-black mb-1">WhatsApp Direct</h3>
+              <h3 className="text-lg font-black mb-1">{t.contact.whatsappTitle}</h3>
               <p className={`text-xs mb-4 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                Message directly for project inquiries, footage links, and instant quotes.
+                {t.contact.whatsappDesc}
               </p>
 
               <div className="p-3 rounded-xl bg-black/60 border border-emerald-500/30 mb-4 flex items-center justify-between">
@@ -89,12 +93,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   {copiedPhone ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Copied</span>
+                      <span>{t.contact.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copy</span>
+                      <span>{t.contact.copy}</span>
                     </>
                   )}
                 </button>
@@ -109,7 +113,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
               className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all cursor-pointer active:scale-95"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span>Chat on WhatsApp</span>
+              <span>{t.contact.btnChatWhatsApp}</span>
             </a>
           </div>
 
@@ -127,13 +131,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   <Mail className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-wider">
-                  Official
+                  {lang === 'bn' ? 'অফিশিয়াল' : 'Official'}
                 </span>
               </div>
 
-              <h3 className="text-lg font-black mb-1">Direct Email</h3>
+              <h3 className="text-lg font-black mb-1">{t.contact.emailTitle}</h3>
               <p className={`text-xs mb-4 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                Send project briefs, asset folders, and contract details directly.
+                {t.contact.emailDesc}
               </p>
 
               <div className="p-3 rounded-xl bg-black/60 border border-amber-500/30 mb-4 flex items-center justify-between">
@@ -148,12 +152,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   {copiedEmail ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-yellow-400" />
-                      <span>Copied</span>
+                      <span>{t.contact.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copy</span>
+                      <span>{t.contact.copy}</span>
                     </>
                   )}
                 </button>
@@ -166,7 +170,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
               className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-amber-500 hover:bg-amber-400 text-black shadow-md transition-all cursor-pointer active:scale-95"
             >
               <Send className="w-3.5 h-3.5 text-black" />
-              <span>Send An Email</span>
+              <span>{t.contact.btnSendEmail}</span>
             </a>
           </div>
 
@@ -184,18 +188,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   <MapPin className="w-5 h-5 text-amber-400" />
                 </div>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 uppercase tracking-wider">
-                  Location
+                  {lang === 'bn' ? 'ঠিকানা' : 'Location'}
                 </span>
               </div>
 
-              <h3 className="text-lg font-black mb-1">Studio Address</h3>
+              <h3 className="text-lg font-black mb-1">{t.contact.addressTitle}</h3>
               <p className={`text-xs mb-3 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                Dhaka, Bangladesh. Open for local meetings & global remote creative work.
+                {t.contact.addressDesc}
               </p>
 
               <div className="p-3 rounded-xl bg-black/60 border border-zinc-800 mb-4 flex items-start justify-between gap-2">
                 <span className="font-mono text-xs text-zinc-200 leading-snug">
-                  {USER_INFO.address}
+                  {t.hero.address}
                 </span>
                 <button
                   type="button"
@@ -205,12 +209,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                   {copiedAddress ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Copied</span>
+                      <span>{t.contact.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copy</span>
+                      <span>{t.contact.copy}</span>
                     </>
                   )}
                 </button>
@@ -225,7 +229,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
               className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 shadow-md transition-all cursor-pointer active:scale-95"
             >
               <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-              <span>View On Google Maps</span>
+              <span>{t.contact.btnViewMap}</span>
             </a>
           </div>
 
@@ -237,14 +241,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
             <div className="text-center sm:text-left">
               <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-center sm:justify-start gap-1.5 mb-1">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                Social Profiles & Networks
+                {lang === 'bn' ? 'সোশ্যাল প্রোফাইল ও নেটওয়ার্ক' : 'Social Profiles & Networks'}
               </span>
               <h4 className="text-base sm:text-lg font-black text-white">
-                Connect Directly on Social Media
+                {lang === 'bn' ? 'সোশ্যাল মিডিয়ায় সরাসরি কানেক্ট করুন' : 'Connect Directly on Social Media'}
               </h4>
             </div>
             <span className="text-xs text-zinc-400">
-              Active on Facebook & X (Twitter)
+              {lang === 'bn' ? 'ফেসবুক ও এক্সে (টুইটার) সক্রিয়' : 'Active on Facebook & X (Twitter)'}
             </span>
           </div>
 
@@ -266,12 +270,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                     Facebook Profile
                   </h5>
                   <p className="text-xs text-zinc-400">
-                    Connect for video projects & updates
+                    {lang === 'bn' ? 'ভিডিও প্রকল্প ও আপডেটের জন্য যুক্ত হোন' : 'Connect for video projects & updates'}
                   </p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 group-hover:translate-x-0.5 transition-transform">
-                Visit Profile
+                {lang === 'bn' ? 'প্রোফাইল দেখুন' : 'Visit Profile'}
                 <ExternalLink className="w-3.5 h-3.5" />
               </span>
             </a>
@@ -293,12 +297,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
                     X (Twitter) Profile
                   </h5>
                   <p className="text-xs text-zinc-400">
-                    Follow motion design & creative thoughts
+                    {lang === 'bn' ? 'মোশন ডিজাইন ও ক্রিয়েটিভ আপডেট ফলো করুন' : 'Follow motion design & creative thoughts'}
                   </p>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:translate-x-0.5 transition-transform">
-                Follow on 𝕏
+                {lang === 'bn' ? 'এক্সে ফলো করুন' : 'Follow on 𝕏'}
                 <ExternalLink className="w-3.5 h-3.5" />
               </span>
             </a>
@@ -309,7 +313,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-zinc-400">
           <span className="inline-flex items-center gap-1.5 text-zinc-300">
             <MapPin className="w-3.5 h-3.5 text-amber-500" />
-            {USER_INFO.address}
+            {t.hero.address}
           </span>
           <span className="text-zinc-600">•</span>
           <a
@@ -334,7 +338,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ darkMode }) => {
             <ExternalLink className="w-3 h-3" />
           </a>
           <span className="text-zinc-600">•</span>
-          <span>{USER_INFO.role}</span>
+          <span>{t.navbar.role}</span>
         </div>
 
       </div>

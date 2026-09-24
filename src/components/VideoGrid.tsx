@@ -14,11 +14,13 @@ import {
   Layers,
   X,
 } from 'lucide-react';
-import { VideoItem } from '../types';
+import { VideoItem, Language } from '../types';
+import { translations } from '../translations';
 
 interface VideoGridProps {
   darkMode: boolean;
   videos: VideoItem[];
+  lang: Language;
 }
 
 const getYouTubeId = (url: string): string => {
@@ -34,7 +36,8 @@ const getThumbnailUrl = (video: VideoItem): string => {
   return '';
 };
 
-export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos }) => {
+export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos, lang }) => {
+  const t = translations[lang];
   const [activeIndex, setActiveIndex] = useState(0);
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
@@ -129,18 +132,18 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos }) => {
                 }`}
               >
                 <Film className="w-3.5 h-3.5 text-yellow-400" />
-                Curated Video Portfolio
+                {t.videos.tag}
               </span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
-              Selected Video Editing Works
+              {t.videos.heading}
             </h2>
             <p
               className={`mt-1.5 text-sm sm:text-base max-w-xl ${
                 darkMode ? 'text-zinc-400' : 'text-slate-600'
               }`}
             >
-              Interactive 3D carousel showcase of high-impact vertical cuts, kinetic motion edits, and sound-synchronized sequences.
+              {t.videos.subtitle}
             </p>
           </div>
 
@@ -164,7 +167,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos }) => {
                 title="3D Stacked Carousel View"
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span>3D Carousel</span>
+                <span>{lang === 'bn' ? '৩ডি ক্যারোসেল' : '3D Carousel'}</span>
               </button>
               <button
                 type="button"
@@ -177,7 +180,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos }) => {
                 title="All Grid View"
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
-                <span>Grid View</span>
+                <span>{lang === 'bn' ? 'গ্রিড ভিউ' : 'Grid View'}</span>
               </button>
             </div>
 
@@ -189,7 +192,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ darkMode, videos }) => {
               }`}
             >
               <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-              <span>{videos.length} Videos</span>
+              <span>{videos.length} {t.videos.videoCount}</span>
             </div>
           </div>
         </div>

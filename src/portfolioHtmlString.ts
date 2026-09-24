@@ -117,6 +117,19 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
   </style>
 </head>
 <body class="bg-[#07080a] text-slate-100 antialiased selection:bg-yellow-400 selection:text-black min-h-screen relative">
+  <!-- FIXED AMBIENT BACKGROUND PORTRAIT (Centered, Face + Cap in Hand Visible, seamlessly feathered) -->
+  <div id="fixed-bg-portrait" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none flex items-center justify-center">
+    <div class="absolute inset-0 bg-cover bg-center pointer-events-none opacity-30 scale-120 blur-3xl" style="background-image: url('profile.jpg');"></div>
+    <div id="bg-portrait-container" class="relative z-10 flex items-center justify-center w-full h-full p-6 will-change-transform" style="transform: translate3d(0, -15px, 0); transition: transform 100ms ease-out;">
+      <img src="https://i.postimg.cc/TPYDzfHV/Fai.jpg" onerror="this.src='bg_portrait.jpg'" alt="" class="max-h-[85vh] w-auto max-w-[88vw] sm:max-w-[720px] object-contain object-center opacity-57 contrast-112 brightness-106 saturate-95" style="mask-image: radial-gradient(ellipse 68% 74% at 50% 46%, black 20%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0.5) 52%, rgba(0, 0, 0, 0.12) 66%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 68% 74% at 50% 46%, black 20%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0.5) 52%, rgba(0, 0, 0, 0.12) 66%, transparent 78%);">
+    </div>
+    <div class="absolute inset-y-0 left-0 w-1/4 max-w-[360px] pointer-events-none" style="background: linear-gradient(to right, #07080a 25%, rgba(7, 8, 10, 0.5) 65%, transparent 100%);"></div>
+    <div class="absolute inset-y-0 right-0 w-1/4 max-w-[360px] pointer-events-none" style="background: linear-gradient(to left, #07080a 25%, rgba(7, 8, 10, 0.5) 65%, transparent 100%);"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 50% 48%, rgba(245, 158, 11, 0.12) 0%, rgba(7, 8, 10, 0.25) 45%, rgba(7, 8, 10, 0.85) 90%, #07080a 100%);"></div>
+    <div class="absolute top-0 inset-x-0 h-32 pointer-events-none" style="background: linear-gradient(to bottom, rgba(7, 8, 10, 0.9), transparent);"></div>
+    <div class="absolute bottom-0 inset-x-0 h-36 pointer-events-none" style="background: linear-gradient(to top, #07080a 20%, transparent);"></div>
+  </div>
+
   <div id="cursor-glow" aria-hidden="true"></div>
   <div id="cursor-follower" aria-hidden="true"></div>
   <div id="cursor-dot" aria-hidden="true"></div>
@@ -447,6 +460,14 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
         closeSpotlightSearch();
       }
     });
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const transY = Math.min(195, -15 + y * 0.15);
+      const scale = 1 + Math.min(0.04, y * 0.000035);
+      const c = document.getElementById('bg-portrait-container');
+      if (c) c.style.transform = \`translate3d(0, \${transY}px, 0) scale(\${scale})\`;
+    }, { passive: true });
   </script>
 
   <div id="spotlight-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-start justify-center pt-20 px-4" onclick="closeSpotlightSearch()">

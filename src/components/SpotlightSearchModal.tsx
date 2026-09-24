@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Search, X, Video, Palette, Sparkles, MessageCircle, Mail, MapPin, ExternalLink, ArrowRight, Wrench, Layers } from 'lucide-react';
 import { USER_INFO, PORTFOLIO_VIDEOS, GRAPHIC_WORKS, SOFTWARE_TOOLS } from '../data';
-import { GraphicItem } from '../types';
+import { GraphicItem, Language } from '../types';
+import { translations } from '../translations';
 
 interface SearchItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Profile & Contact' | 'Video Project' | 'Graphic Design' | 'Tool & Skill' | 'Social Profile';
+  category: string;
   icon: React.ReactNode;
   action: () => void;
   keywords: string[];
@@ -18,6 +19,7 @@ interface SpotlightSearchModalProps {
   onClose: () => void;
   darkMode: boolean;
   onOpenGraphicLightbox?: (graphic: GraphicItem) => void;
+  lang: Language;
 }
 
 export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
@@ -25,7 +27,9 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
   onClose,
   darkMode,
   onOpenGraphicLightbox,
+  lang,
 }) => {
+  const t = translations[lang];
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -243,7 +247,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            placeholder="Type any name, project, video, poster, tool, or skill (e.g. Masum, Reel, CapCut, Meta)..."
+            placeholder={t.search.placeholder}
             className="w-full bg-transparent border-0 outline-none text-sm sm:text-base font-medium placeholder-zinc-500 text-zinc-100"
           />
           {query && (
@@ -252,7 +256,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
               onClick={() => setQuery('')}
               className="text-xs px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300"
             >
-              Clear
+              {lang === 'bn' ? 'মুছুন' : 'Clear'}
             </button>
           )}
           <button
@@ -268,7 +272,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         <div className="max-h-[60vh] overflow-y-auto p-2 divide-y divide-zinc-800/40">
           {filteredItems.length === 0 ? (
             <div className="p-8 text-center text-zinc-500 text-sm">
-              No matching items found for &ldquo;{query}&rdquo;. Try searching &ldquo;Masum&rdquo;, &ldquo;Reel&rdquo;, &ldquo;Premiere&rdquo;, or &ldquo;WhatsApp&rdquo;.
+              {t.search.noResults} &ldquo;{query}&rdquo;. {t.search.trySearching}
             </div>
           ) : (
             filteredItems.map((item, idx) => {
@@ -304,7 +308,7 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
                   </div>
 
                   <div className="flex items-center gap-1 text-xs text-amber-400 shrink-0 ml-3 opacity-80 group-hover:opacity-100">
-                    <span>Jump</span>
+                    <span>{t.search.jump}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -318,17 +322,17 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
           <div className="flex items-center gap-3">
             <span>
               <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">↑</kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 ml-1">↓</kbd> to navigate
+              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 ml-1">↓</kbd> {t.search.navigateHint}
             </span>
             <span>
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">↵</kbd> to select
+              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">↵</kbd> {t.search.selectHint}
             </span>
             <span>
-              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">ESC</kbd> to close
+              <kbd className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">ESC</kbd> {t.search.closeHint}
             </span>
           </div>
           <span className="text-amber-400/90 font-semibold hidden sm:inline">
-            ⚡ Instant 0ms Local Search
+            ⚡ {t.search.instantTag}
           </span>
         </div>
       </div>

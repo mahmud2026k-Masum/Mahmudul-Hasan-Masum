@@ -1,18 +1,23 @@
 import React from 'react';
 import { Image as ImageIcon, ZoomIn, Palette, Sparkles } from 'lucide-react';
-import { GraphicItem } from '../types';
+import { GraphicItem, Language } from '../types';
+import { translations } from '../translations';
 
 interface GraphicSectionProps {
   darkMode: boolean;
   graphics: GraphicItem[];
   onOpenLightbox: (graphic: GraphicItem) => void;
+  lang: Language;
 }
 
 export const GraphicSection: React.FC<GraphicSectionProps> = ({
   darkMode,
   graphics,
   onOpenLightbox,
+  lang,
 }) => {
+  const t = translations[lang];
+
   return (
     <section id="graphic-works" className="py-12 sm:py-16 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,18 +34,18 @@ export const GraphicSection: React.FC<GraphicSectionProps> = ({
                 }`}
               >
                 <Palette className="w-3.5 h-3.5 text-yellow-400" />
-                Visual Design Portfolio
+                {t.graphics.tag}
               </span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Graphic & Poster Designs
+              {t.graphics.heading}
             </h2>
             <p
               className={`mt-1.5 text-sm sm:text-base max-w-xl ${
                 darkMode ? 'text-amber-200/70' : 'text-slate-600'
               }`}
             >
-              Creative banners, promotional visual concepts, and graphic art pieces designed for digital branding. Click any image to view in high resolution.
+              {t.graphics.subtitle}
             </p>
           </div>
 
@@ -52,7 +57,7 @@ export const GraphicSection: React.FC<GraphicSectionProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-            <span>6 Graphic Showcases</span>
+            <span>{graphics.length} {t.graphics.badgeCount}</span>
           </div>
         </div>
 
@@ -97,13 +102,13 @@ export const GraphicSection: React.FC<GraphicSectionProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500/90 text-black font-extrabold text-xs shadow-xl transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
                     <ZoomIn className="w-4 h-4 text-black" />
-                    <span>View Full Size</span>
+                    <span>{t.graphics.openInLightbox}</span>
                   </div>
                 </div>
 
                 {/* Badge Tag */}
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-amber-500/30 text-[11px] font-bold text-yellow-300">
-                  {item.category}
+                  {lang === 'bn' ? (item.category === 'Poster' ? 'পোস্টার' : item.category) : item.category}
                 </div>
               </div>
 
@@ -118,7 +123,7 @@ export const GraphicSection: React.FC<GraphicSectionProps> = ({
                       darkMode ? 'text-amber-200/60' : 'text-slate-500'
                     }`}
                   >
-                    Asset: {item.src}
+                    {t.graphics.clickToZoom}
                   </p>
                 </div>
 

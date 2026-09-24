@@ -10,21 +10,25 @@ import {
   ArrowDown,
 } from 'lucide-react';
 import { USER_INFO, PORTFOLIO_VIDEOS } from '../data';
-import { VideoItem } from '../types';
+import { VideoItem, Language } from '../types';
+import { translations } from '../translations';
 
 interface HeroSectionProps {
   darkMode: boolean;
   featuredVideo: VideoItem;
   name: string;
+  lang: Language;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   darkMode,
   featuredVideo,
   name,
+  lang,
 }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isPhotoPopped, setIsPhotoPopped] = useState(false);
+  const t = translations[lang];
 
   return (
     <section id="hero-section" className="pt-6 pb-12 sm:pt-8 sm:pb-16 transition-colors">
@@ -63,14 +67,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   }`}
                 >
                   <img
-                    src="profile.jpg"
+                    src="/profile.jpg?v=orig"
                     alt={`Profile picture of ${name}`}
                     id="author-profile-img"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     loading="eager"
                     onError={(e) => {
                       const target = e.currentTarget;
-                      if (target.src.indexOf('/profile.jpg') === -1) {
+                      if (target.src.indexOf('profile.jpg') === -1) {
                         target.src = '/profile.jpg';
                       }
                     }}
@@ -87,33 +91,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Minimalist Identity Pill */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-zinc-900 border border-zinc-800 text-zinc-300">
                 <Award className="w-3.5 h-3.5 text-amber-500" />
-                <span>Video Editor • Graphic Designer • Meta Marketer</span>
+                <span>{t.hero.identityPill}</span>
               </div>
 
               {/* Creator Name - Guaranteed ONE LINE in solid deep warm gold */}
               <div className="overflow-hidden">
                 <h2 className="text-xs font-bold tracking-widest uppercase text-zinc-400 mb-1">
-                  Creative Portfolio of
+                  {t.hero.portfolioOf}
                 </h2>
                 <h1
                   id="hero-creator-name"
                   className="text-2xl sm:text-4xl md:text-5xl lg:text-[46px] font-black tracking-tight uppercase whitespace-nowrap text-[#f59e0b] leading-tight"
                   style={{ color: '#f59e0b' }}
                 >
-                  {name}
+                  {lang === 'bn' ? t.hero.creatorName : name}
                 </h1>
               </div>
 
               {/* 3 Discipline Badges */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
-                  <Video className="w-3.5 h-3.5 text-amber-500" /> Video Editing
+                  <Video className="w-3.5 h-3.5 text-amber-500" /> {t.hero.disciplineVideo}
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
-                  <Palette className="w-3.5 h-3.5 text-amber-500" /> Graphic Design
+                  <Palette className="w-3.5 h-3.5 text-amber-500" /> {t.hero.disciplineGraphic}
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-zinc-900/90 text-zinc-200 border border-zinc-800 hover:border-amber-500/40 transition-colors">
-                  <Target className="w-3.5 h-3.5 text-amber-500" /> Meta Marketing
+                  <Target className="w-3.5 h-3.5 text-amber-500" /> {t.hero.disciplineMarketing}
                 </span>
               </div>
 
@@ -122,13 +126,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   darkMode ? 'text-zinc-300' : 'text-zinc-700'
                 }`}
               >
-                Welcome to my creative portfolio! I edit high-retention video content, design high-CTR thumbnails and posters, and build conversion-driven Meta Ads for modern digital growth.
+                {t.hero.bioSummary}
               </p>
 
               {/* Address / Location Line */}
               <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs text-zinc-400 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                <span className="text-zinc-300">{USER_INFO.address}</span>
+                <span className="text-zinc-300">{t.hero.address}</span>
               </div>
 
               {/* Minimalist Clean Portfolio Navigation Buttons */}
@@ -140,7 +144,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-400 text-black shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                   <Palette className="w-4 h-4 text-black" />
-                  <span>View Graphic Works</span>
+                  <span>{t.hero.btnViewGraphics}</span>
                 </a>
 
                 {/* Explore Videos Button */}
@@ -154,7 +158,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   }`}
                 >
                   <Video className="w-4 h-4 text-amber-500" />
-                  <span>{PORTFOLIO_VIDEOS.length} Video Edits</span>
+                  <span>{PORTFOLIO_VIDEOS.length} {t.hero.videoCountLabel}</span>
                 </a>
 
                 {/* Direct Contact Section Jump */}
@@ -168,7 +172,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   }`}
                 >
                   <ArrowDown className="w-4 h-4 text-amber-400" />
-                  <span>Get in Touch</span>
+                  <span>{t.hero.btnGetInTouch}</span>
                 </a>
               </div>
 
@@ -188,7 +192,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                Featured Trailer • Best Reel
+                {t.hero.featuredTag}
               </span>
             </div>
             
@@ -203,7 +207,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              <span>{featuredVideo.platform === 'youtube' ? 'Watch on YouTube' : 'Watch on Facebook'}</span>
+              <span>{featuredVideo.platform === 'youtube' ? t.hero.featuredWatchYouTube : 'Watch on Facebook'}</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -241,10 +245,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
             <span className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-              Dynamic trailer cut — sound design, pacing & visual storytelling.
+              {t.hero.featuredVideoDesc}
             </span>
             <span className={`font-mono text-[11px] font-semibold ${darkMode ? 'text-amber-400/90' : 'text-zinc-700'}`}>
-              Aspect Ratio 16:9 • High Definition
+              {t.hero.aspectRatio} • {t.hero.retentionPacing}
             </span>
           </div>
         </div>

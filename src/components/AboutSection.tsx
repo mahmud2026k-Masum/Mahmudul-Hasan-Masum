@@ -1,12 +1,17 @@
 import React from 'react';
 import { UserCheck, Sparkles, CheckCircle2, Film, Video, Palette, Target } from 'lucide-react';
 import { USER_INFO, SOFTWARE_TOOLS } from '../data';
+import { Language } from '../types';
+import { translations } from '../translations';
 
 interface AboutSectionProps {
   darkMode: boolean;
+  lang: Language;
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
+export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode, lang }) => {
+  const t = translations[lang];
+
   return (
     <section id="about-section" className="py-12 sm:py-16 transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,23 +37,23 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
               }`}
             >
               <UserCheck className="w-3.5 h-3.5 text-yellow-400" />
-              About Me • Creative Journey & Identity
+              {t.about.tag}
             </span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            Video Editor, Graphic Designer & Meta Marketer
+            {t.about.heading}
           </h2>
 
           <div className="flex flex-wrap gap-2 mb-6">
             <span className="px-3 py-1 rounded-xl text-xs font-black bg-yellow-400/15 text-yellow-300 border border-yellow-400/40 inline-flex items-center gap-1.5">
-              <Video className="w-3.5 h-3.5" /> High-Retention Video Editing
+              <Video className="w-3.5 h-3.5" /> {lang === 'bn' ? 'হাই-রিটেনশন ভিডিও এডিটিং' : 'High-Retention Video Editing'}
             </span>
             <span className="px-3 py-1 rounded-xl text-xs font-black bg-sky-400/15 text-sky-300 border border-sky-400/40 inline-flex items-center gap-1.5">
-              <Palette className="w-3.5 h-3.5" /> Key Art & Graphic Design
+              <Palette className="w-3.5 h-3.5" /> {lang === 'bn' ? 'পোস্টার ও গ্রাফিক ডিজাইন' : 'Key Art & Graphic Design'}
             </span>
             <span className="px-3 py-1 rounded-xl text-xs font-black bg-emerald-400/15 text-emerald-300 border border-emerald-400/40 inline-flex items-center gap-1.5">
-              <Target className="w-3.5 h-3.5" /> Meta Ads Marketing & ROAS
+              <Target className="w-3.5 h-3.5" /> {lang === 'bn' ? 'মেটা বিজ্ঞাপন ও আরওএএস' : 'Meta Ads Marketing & ROAS'}
             </span>
           </div>
 
@@ -65,15 +70,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
             </div>
             
             <p className="text-base sm:text-lg leading-relaxed font-normal relative z-10">
-              &ldquo;{USER_INFO.honestBio}&rdquo;
+              &ldquo;{t.about.bio}&rdquo;
             </p>
 
             <div className="mt-4 pt-4 border-t border-amber-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
               <span className="font-bold text-yellow-400 uppercase tracking-wider">
-                — {USER_INFO.name}
+                — {lang === 'bn' ? t.hero.creatorName : USER_INFO.name}
               </span>
               <span className={darkMode ? 'text-amber-200/60 font-mono' : 'text-slate-500 font-mono'}>
-                Daily Craft in Premiere, After Effects, Photoshop, CapCut & Meta Ads
+                {lang === 'bn'
+                  ? 'প্রিমিয়ার প্রো, আফটার ইফেক্টস, ফটোশপ, ক্যাপকাট এবং মেটা বিজ্ঞাপনে বিশেষজ্ঞ'
+                  : 'Daily Craft in Premiere, After Effects, Photoshop, CapCut & Meta Ads'}
               </span>
             </div>
           </div>
@@ -82,7 +89,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
           <div className="mb-8">
             <h3 className="text-sm font-bold uppercase tracking-widest text-amber-400 mb-3 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-yellow-400" />
-              Software Mastery & Creative Stack
+              {t.about.softwareStackTitle}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
               {SOFTWARE_TOOLS.map((tool) => (
@@ -112,7 +119,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ darkMode }) => {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-widest text-amber-400 mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-yellow-400" />
-              What I Bring to Every Project
+              {t.about.whatIBringTitle}
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
