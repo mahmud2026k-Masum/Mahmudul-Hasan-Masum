@@ -59,6 +59,12 @@ export interface TranslationDictionary {
     facebookLink: string;
     videoCount: string;
     retentionBadge: string;
+    filterAll: string;
+    filterReels: string;
+    filterMotion: string;
+    theaterMode: string;
+    watchInline: string;
+    stopVideo: string;
   };
   software: {
     tag: string;
@@ -197,14 +203,14 @@ export const translations: Record<Language, TranslationDictionary> = {
       btnExploreVideos: 'Explore Video Edits',
       videoCountLabel: 'Video Edits',
       btnGetInTouch: 'Get in Touch',
-      featuredTag: 'Featured Trailer • Best Reel',
+      featuredTag: 'Featured Masterwork • Video Editing',
       featuredWatchYouTube: 'Watch on YouTube',
-      featuredVideoTitle: 'Cinematic Teaser & High-Retention Reel Showcase',
+      featuredVideoTitle: 'A Life of Interest | অজানা সুদের ফাঁদ • Nafees Salim',
       featuredVideoDesc:
-        'High-energy montage demonstrating precise timeline cuts, color grading, sound design, dynamic speed ramps, and retention-focused pacing in Premiere Pro and After Effects.',
-      videoFormat: '9:16 Vertical Reel',
+        'Professional documentary and educational video edit featuring Nafees Salim. Expert narrative pacing, clear audio mastering, kinetic graphics, and retention-focused storytelling in Premiere Pro & After Effects.',
+      videoFormat: '16:9 Widescreen Documentary',
       aspectRatio: 'Full HD 1080p',
-      retentionPacing: 'High-Retention Pacing',
+      retentionPacing: 'High-Retention Storytelling',
       watchEmbedVideo: 'Video Player',
     },
     graphics: {
@@ -230,6 +236,12 @@ export const translations: Record<Language, TranslationDictionary> = {
       facebookLink: 'Facebook Reel',
       videoCount: 'Projects',
       retentionBadge: 'High-Retention Edit',
+      filterAll: 'All Projects',
+      filterReels: 'Shorts & Reels (9:16)',
+      filterMotion: 'Widescreen & Motion (16:9)',
+      theaterMode: 'Theater View',
+      watchInline: 'Play Here',
+      stopVideo: 'Stop',
     },
     software: {
       tag: 'Mastered Creative Stack',
@@ -373,14 +385,14 @@ export const translations: Record<Language, TranslationDictionary> = {
       btnExploreVideos: 'ভিডিও এডিটস দেখুন',
       videoCountLabel: 'ভিডিও এডিটস',
       btnGetInTouch: 'যোগাযোগ করুন',
-      featuredTag: 'ফিচার্ড ট্রেইলার • সেরা রিল',
+      featuredTag: 'ফিচার্ড মাস্টারওয়ার্ক • ভিডিও এডিটিং',
       featuredWatchYouTube: 'ইউটিউবে দেখুন',
-      featuredVideoTitle: 'সিনেমেটিক টিজার ও হাই-রিটেনশন রিল শোকেস',
+      featuredVideoTitle: 'A Life of Interest | অজানা সুদের ফাঁদ • নাফিস সেলিম',
       featuredVideoDesc:
-        'প্রিমিয়ার প্রো ও আফটার ইফেক্টসে তৈরি হাই-এনার্জি মন্টেজ—যেখানে রয়েছে নিখুঁত টাইমলিন কাট, কালার গ্রেডিং, সাউন্ড ডিজাইন এবং রিটেনশন-ফোকাসড পেসিং।',
-      videoFormat: '৯:১৬ ভার্টিক্যাল রিল',
+        'নাফিস সেলিমের সাথে তৈরি বিশেষ ডকুমেন্টারি ও শিক্ষণীয় প্রজেক্ট—যেখানে নিখুঁত স্টোরিটেলিং, স্বচ্ছ অডিও মাস্টারিং, মোশন গ্রাফিক্স ও হাই-রিটেনশন ভিডিও এডিটিং প্রয়োগ করা হয়েছে।',
+      videoFormat: '১৬:৯ ওয়াইডস্ক্রিন ডকুমেন্টারি',
       aspectRatio: 'ফুল এইচডি ১০৮০p',
-      retentionPacing: 'হাই-রিটেনশন পেসিং',
+      retentionPacing: 'হাই-রিটেনশন স্টোরিটেলিং',
       watchEmbedVideo: 'ভিডিও প্লেয়ার',
     },
     graphics: {
@@ -406,6 +418,12 @@ export const translations: Record<Language, TranslationDictionary> = {
       facebookLink: 'ফেসবুক রিল',
       videoCount: 'প্রোজেক্টস',
       retentionBadge: 'হাই-রিটেনশন এডিট',
+      filterAll: 'সকল প্রজেক্ট',
+      filterReels: 'শর্টস ও রিলস (৯:১৬)',
+      filterMotion: 'ওয়াইডস্ক্রিন ও মোশন (১৬:৯)',
+      theaterMode: 'থিয়েটার ভিউ',
+      watchInline: 'এখানে দেখুন',
+      stopVideo: 'বন্ধ করুন',
     },
     software: {
       tag: 'মাস্টারড ক্রিয়েটিভ স্ট্যাক',

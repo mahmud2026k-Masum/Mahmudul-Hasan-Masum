@@ -120,6 +120,33 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
   <!-- FIXED AMBIENT BACKGROUND PORTRAIT (Centered, Face + Cap in Hand Visible, seamlessly feathered) -->
   <div id="fixed-bg-portrait" class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none flex items-center justify-center">
     <div class="absolute inset-0 bg-cover bg-center pointer-events-none opacity-30 scale-120 blur-3xl" style="background-image: url('profile.jpg');"></div>
+    <!-- STARRY VISUAL LIGHTS (White starry lights on both sides & canvas, static) -->
+    <div class="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+      <div class="absolute rounded-full bg-white" style="top:8%;left:4%;width:2.5px;height:2.5px;opacity:0.85;box-shadow:0 0 6px 1.5px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:15%;left:9%;width:3.5px;height:3.5px;opacity:0.95;box-shadow:0 0 8px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:22%;left:15%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 4px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:28%;left:6%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:36%;left:20%;width:2.5px;height:2.5px;opacity:0.8;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:44%;left:8%;width:3px;height:3px;opacity:0.85;box-shadow:0 0 6px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:52%;left:5%;width:3.5px;height:3.5px;opacity:0.95;box-shadow:0 0 8px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:60%;left:17%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:68%;left:8%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:76%;left:22%;width:2.5px;height:2.5px;opacity:0.8;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:84%;left:10%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:92%;left:5%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:9%;left:95%;width:2.5px;height:2.5px;opacity:0.85;box-shadow:0 0 6px 1.5px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:16%;left:89%;width:3.5px;height:3.5px;opacity:0.95;box-shadow:0 0 8px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:23%;left:83%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 4px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:29%;left:93%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:37%;left:79%;width:2.5px;height:2.5px;opacity:0.8;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:45%;left:91%;width:3px;height:3px;opacity:0.85;box-shadow:0 0 6px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:53%;left:95%;width:3.5px;height:3.5px;opacity:0.95;box-shadow:0 0 8px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:61%;left:82%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:69%;left:92%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:77%;left:77%;width:2.5px;height:2.5px;opacity:0.8;box-shadow:0 0 5px 1px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:85%;left:88%;width:3px;height:3px;opacity:0.9;box-shadow:0 0 7px 2px #fff;"></div>
+      <div class="absolute rounded-full bg-white" style="top:93%;left:94%;width:2px;height:2px;opacity:0.75;box-shadow:0 0 5px 1px #fff;"></div>
+    </div>
     <div id="bg-portrait-container" class="relative z-10 flex items-center justify-center w-full h-full p-6 will-change-transform" style="transform: translate3d(0, -15px, 0); transition: transform 100ms ease-out;">
       <img src="https://i.postimg.cc/TPYDzfHV/Fai.jpg" onerror="this.src='bg_portrait.jpg'" alt="" class="max-h-[85vh] w-auto max-w-[88vw] sm:max-w-[720px] object-contain object-center opacity-57 contrast-112 brightness-106 saturate-95" style="mask-image: radial-gradient(ellipse 68% 74% at 50% 46%, black 20%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0.5) 52%, rgba(0, 0, 0, 0.12) 66%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 68% 74% at 50% 46%, black 20%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0.5) 52%, rgba(0, 0, 0, 0.12) 66%, transparent 78%);">
     </div>
@@ -197,12 +224,16 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
     <section>
       <div class="flex items-center justify-between mb-3">
         <span class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-zinc-900 text-amber-400 border border-zinc-800">
-          ✨ Featured Trailer • Best Reel
+          ✨ Featured Masterwork • Nafees Salim
         </span>
-        <a href="https://www.youtube.com/shorts/7-4GKg2K0cE" target="_blank" class="text-xs font-semibold text-zinc-400 hover:text-amber-400">Watch on YouTube &nearr;</a>
+        <a href="https://youtu.be/e3FSvrQug5I?si=HK_mBZtRv4W9iBAn" target="_blank" class="text-xs font-semibold text-zinc-400 hover:text-amber-400">Watch on YouTube &nearr;</a>
       </div>
       <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-800 bg-black shadow-2xl">
-        <iframe src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/e3FSvrQug5I" class="w-full h-full border-0 absolute inset-0" allowfullscreen></iframe>
+      </div>
+      <div class="mt-2 text-xs text-zinc-400 flex flex-wrap justify-between items-center px-1 gap-2">
+        <span class="font-medium text-zinc-300">A Life of Interest | অজানা সুদের ফাঁদ • Nafees Salim</span>
+        <span class="font-mono text-amber-400 font-semibold">16:9 Full HD • High-Retention Storytelling</span>
       </div>
     </section>
 
@@ -225,39 +256,92 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- 3. SELECTED VIDEO EDITING WORKS (5) -->
+    <!-- 3. SELECTED VIDEO EDITING WORKS (7) -->
     <section id="video-portfolio">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <span class="text-xs font-bold uppercase text-amber-400">🎬 Video Carousel</span>
-          <h2 class="text-2xl font-black text-white uppercase">Selected Video Editing Works (5)</h2>
+          <span class="text-xs font-bold uppercase text-amber-400">🎬 Video Portfolio</span>
+          <h2 class="text-2xl font-black text-white uppercase">Selected Video Editing Works (7)</h2>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-mono text-zinc-400 px-3 py-1 rounded-lg border border-zinc-800 bg-zinc-900">5 Videos</span>
-          <button type="button" onclick="document.getElementById('video-export-carousel').scrollBy({left: -300, behavior: 'smooth'})" class="p-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-amber-400 hover:bg-amber-500 hover:text-black font-bold text-xs cursor-pointer">&larr;</button>
-          <button type="button" onclick="document.getElementById('video-export-carousel').scrollBy({left: 300, behavior: 'smooth'})" class="p-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-amber-400 hover:bg-amber-500 hover:text-black font-bold text-xs cursor-pointer">&rarr;</button>
-        </div>
+        <span class="text-xs font-mono text-zinc-400 px-3 py-1 rounded-lg border border-zinc-800 bg-zinc-900">7 Projects</span>
       </div>
-      <div id="video-export-carousel" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4">
-        <div class="w-[260px] shrink-0 snap-center rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/16] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3 text-xs font-bold text-zinc-200">Kinetic Edit 01</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 1. AI Video -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #01</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+            </div>
+            <div class="text-sm font-bold text-white">AI Cinematic Edit • Visual Rhythm</div>
+          </div>
         </div>
-        <div class="w-[260px] shrink-0 snap-center rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/16] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3 text-xs font-bold text-zinc-200">Visual Flow 02</div>
+        <!-- 2. Reel 1 -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #02</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+            </div>
+            <div class="text-sm font-bold text-white">Kinetic Edit 01</div>
+          </div>
         </div>
-        <div class="w-[260px] shrink-0 snap-center rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/16] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3 text-xs font-bold text-zinc-200">Rhythm & Impact 03</div>
+        <!-- 3. Reel 2 -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #03</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+            </div>
+            <div class="text-sm font-bold text-white">Visual Flow 02</div>
+          </div>
         </div>
-        <div class="w-[260px] shrink-0 snap-center rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/16] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/4sOAjFusWDI" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3 text-xs font-bold text-zinc-200">Logo Animation & Motion</div>
+        <!-- 4. Reel 3 -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #04</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+            </div>
+            <div class="text-sm font-bold text-white">Rhythm & Impact 03</div>
+          </div>
         </div>
-        <div class="w-[260px] shrink-0 snap-center rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/16] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/0LxIu7gW8l0" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3 text-xs font-bold text-zinc-200">Motion Video Edit</div>
+        <!-- 5. Skill & Growth Reel -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/S0tyt1NCsKI" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #05</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+            </div>
+            <div class="text-sm font-bold text-white line-clamp-1">আপনার দক্ষতাই হতে পারে আপনার ভবিষ্যৎ সফলতার চাবিকাঠি! 🚀</div>
+          </div>
+        </div>
+        <!-- 6. Motion Video Edit -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/9No7udcYQjM" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #06</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Motion</span>
+            </div>
+            <div class="text-sm font-bold text-white line-clamp-1">Adobe After Effects Motion Video</div>
+          </div>
+        </div>
+        <!-- 7. Motivational Story Video -->
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+          <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/HcfAgHca3R8" class="w-full h-full border-0" allowfullscreen></iframe></div>
+          <div class="p-3.5 flex flex-col justify-between flex-1">
+            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+              <span>PROJECT #07</span>
+              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Widescreen</span>
+            </div>
+            <div class="text-sm font-bold text-white line-clamp-1">কষ্ট ছাড়া সফলতা আসে না, আর পরিশ্রম ছাড়া শ্রেষ্ঠ হওয়া যায় না</div>
+          </div>
         </div>
       </div>
     </section>

@@ -181,18 +181,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
 
         {/* 2. FEATURED VIDEO SHOWCASE (Positioned right below Profile Card) */}
-        <div id="featured-video" className="mb-4">
-          <div className="flex items-center justify-between mb-3 px-1">
-            <div className="flex items-center gap-2">
+        <div id="featured-video" className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3.5 px-1 gap-2">
+            <div className="flex items-center gap-2.5">
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${
                   darkMode
-                    ? 'bg-zinc-900 text-amber-400 border border-zinc-800'
+                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.15)]'
                     : 'bg-zinc-100 text-zinc-800 border border-zinc-300'
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 {t.hero.featuredTag}
+              </span>
+              <span className="hidden sm:inline-block text-xs font-semibold text-zinc-400 truncate max-w-sm">
+                {featuredVideo.title}
               </span>
             </div>
             
@@ -201,7 +204,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               id="watch-featured-source-btn"
-              className={`inline-flex items-center gap-1.5 text-xs font-semibold transition-colors cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto ${
                 darkMode
                   ? 'text-zinc-400 hover:text-amber-400'
                   : 'text-zinc-600 hover:text-zinc-900'
@@ -215,10 +218,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* 16:9 Responsive Video Container */}
           <div
             id="featured-video-container"
-            className={`relative w-full aspect-video rounded-2xl overflow-hidden border transition-all duration-300 group ${
+            className={`relative w-full aspect-video rounded-3xl overflow-hidden border transition-all duration-300 group ${
               darkMode
-                ? 'bg-black border-zinc-800 shadow-[0_10px_35px_rgba(0,0,0,0.8)]'
-                : 'bg-zinc-100 border-zinc-300 shadow-lg'
+                ? 'bg-black border-zinc-800 shadow-[0_15px_45px_rgba(0,0,0,0.85),0_0_30px_rgba(245,158,11,0.15)] hover:border-amber-500/50'
+                : 'bg-zinc-100 border-zinc-300 shadow-xl'
             }`}
           >
             {/* Embedded Video Player */}
@@ -234,10 +237,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Loading Indicator */}
             {!isVideoLoaded && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/90 text-amber-400 z-0">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/95 text-amber-400 z-0">
                 <div className="w-10 h-10 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
                 <p className="text-xs tracking-widest uppercase font-mono text-zinc-400">
-                  Loading Reel...
+                  Loading Video...
                 </p>
               </div>
             )}

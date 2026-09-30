@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Search, X, Video, Palette, Sparkles, MessageCircle, Mail, MapPin, ExternalLink, ArrowRight, Wrench, Layers } from 'lucide-react';
-import { USER_INFO, PORTFOLIO_VIDEOS, GRAPHIC_WORKS, SOFTWARE_TOOLS } from '../data';
+import { USER_INFO, FEATURED_VIDEO, PORTFOLIO_VIDEOS, GRAPHIC_WORKS, SOFTWARE_TOOLS } from '../data';
 import { GraphicItem, Language } from '../types';
 import { translations } from '../translations';
 
@@ -133,7 +133,18 @@ export const SpotlightSearchModal: React.FC<SpotlightSearchModalProps> = ({
         keywords: ['x', 'twitter', 'tweet', 'id', 'social', 'টুইটার'],
       },
 
-      // 3. Video Projects
+      // 3. Featured Masterwork Video
+      {
+        id: 'video-featured',
+        title: FEATURED_VIDEO.title,
+        subtitle: `${FEATURED_VIDEO.tag} • Featured Project`,
+        category: 'Video Project' as const,
+        icon: <Video className="w-4 h-4 text-amber-400" />,
+        action: () => scrollToTarget('featured-video'),
+        keywords: ['nafees', 'salim', 'নাফিস', 'সেলিম', 'featured', 'masterwork', 'interest', 'suder', 'documentary', 'সুদ', FEATURED_VIDEO.title.toLowerCase()],
+      },
+
+      // 4. Video Projects
       ...PORTFOLIO_VIDEOS.map((v) => ({
         id: `video-${v.id}`,
         title: v.title,
