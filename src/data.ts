@@ -125,9 +125,18 @@ export const FEATURED_VIDEO: VideoItem = {
 
 export const PORTFOLIO_VIDEOS: VideoItem[] = [
   {
+    id: 'video-portfolio-showreel',
+    title: 'Mahmudul Hasan | Video Editor & Motion Designer | Creative Portfolio',
+    tag: 'Featured Showreel • Portfolio',
+    sourceUrl: 'https://youtu.be/NB__-FdW7Zk?si=eggbITgmo2iIuy-H',
+    embedUrl: 'https://www.youtube-nocookie.com/embed/NB__-FdW7Zk',
+    platform: 'youtube',
+    aspectRatio: '16/9',
+  },
+  {
     id: 'video-ai',
-    title: 'AI Cinematic Edit • Visual Rhythm Showcase',
-    tag: 'AI Cinematic Edit',
+    title: 'Ai কি মানুষের চাকরি খেয়ে ফেলবে? • AI & Future Reel',
+    tag: 'AI Viral Reel',
     sourceUrl: 'https://www.youtube.com/shorts/7-4GKg2K0cE',
     embedUrl: 'https://www.youtube-nocookie.com/embed/7-4GKg2K0cE',
     platform: 'youtube',
@@ -171,7 +180,7 @@ export const PORTFOLIO_VIDEOS: VideoItem[] = [
   },
   {
     id: 'video-ae',
-    title: 'Adobe After Effects Motion Video',
+    title: 'Adobe After Effects Motion Video • নাজমুল হুদা মোশন',
     tag: 'After Effects Motion',
     sourceUrl: 'https://youtu.be/9No7udcYQjM',
     embedUrl: 'https://www.youtube-nocookie.com/embed/9No7udcYQjM',

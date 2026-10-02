@@ -256,91 +256,132 @@ export const STANDALONE_HTML = `<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- 3. SELECTED VIDEO EDITING WORKS (7) -->
+    <!-- 3. SELECTED VIDEO EDITING WORKS (8) -->
     <section id="video-portfolio">
       <div class="flex items-center justify-between mb-6">
         <div>
           <span class="text-xs font-bold uppercase text-amber-400">🎬 Video Portfolio</span>
-          <h2 class="text-2xl font-black text-white uppercase">Selected Video Editing Works (7)</h2>
+          <h2 class="text-2xl font-black text-white uppercase">Selected Video Editing Works (8)</h2>
         </div>
-        <span class="text-xs font-mono text-zinc-400 px-3 py-1 rounded-lg border border-zinc-800 bg-zinc-900">7 Projects</span>
+        <span class="text-xs font-mono text-zinc-400 px-3 py-1 rounded-lg border border-zinc-800 bg-zinc-900">8 Projects</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- 1. AI Video -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #01</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+
+      <!-- PART 1: TOP FEATURED SHOWREEL (Widescreen 16:9, before reels) -->
+      <div class="mb-10 rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+        <div class="px-4 py-2.5 border-b border-zinc-800 flex items-center justify-between text-xs bg-black/60">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="font-mono text-[11px] font-bold text-amber-400">PROJECT #01 • FEATURED SHOWREEL</span>
+            <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold">16:9 Widescreen</span>
+          </div>
+          <a href="https://youtu.be/NB__-FdW7Zk" target="_blank" class="text-xs text-zinc-400 hover:text-amber-400 font-semibold">YouTube &nearr;</a>
+        </div>
+        <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/NB__-FdW7Zk" class="w-full h-full border-0" allowfullscreen></iframe></div>
+        <div class="p-4 sm:p-5 flex flex-col justify-between">
+          <div class="text-base font-bold text-white">Mahmudul Hasan | Video Editor & Motion Designer | Creative Portfolio</div>
+          <div class="text-xs text-zinc-400 mt-1">Full creative showreel featuring timeline mastery in Premiere Pro, dynamic After Effects motion, and sound design.</div>
+        </div>
+      </div>
+
+      <!-- PART 2: VIRAL SHORT-FORM REELS (9:16 Vertical, exactly same height) -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-zinc-800/60">
+          <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-2">
+            <span>📱</span>
+            <span>Viral Short-Form Reels & AI Edits (5)</span>
+          </h3>
+          <span class="text-xs font-mono text-zinc-400">9:16 Vertical</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+          <!-- 1. AI Video -->
+          <div class="col-span-1 lg:col-span-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/7-4GKg2K0cE" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #02</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+              </div>
+              <div class="text-sm font-bold text-white">Ai কি মানুষের চাকরি খেয়ে ফেলবে? • AI & Future Reel</div>
             </div>
-            <div class="text-sm font-bold text-white">AI Cinematic Edit • Visual Rhythm</div>
+          </div>
+          <!-- 2. Reel 1 -->
+          <div class="col-span-1 lg:col-span-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #03</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+              </div>
+              <div class="text-sm font-bold text-white">Kinetic Edit 01</div>
+            </div>
+          </div>
+          <!-- 3. Reel 2 -->
+          <div class="col-span-1 lg:col-span-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #04</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+              </div>
+              <div class="text-sm font-bold text-white">Visual Flow 02</div>
+            </div>
+          </div>
+          <!-- 4. Reel 3 (Centered: col-start-2) -->
+          <div class="col-span-1 sm:col-span-1 lg:col-start-2 lg:col-span-2 rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #05</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+              </div>
+              <div class="text-sm font-bold text-white">Rhythm & Impact 03</div>
+            </div>
+          </div>
+          <!-- 5. Skill & Growth Reel (Centered next to Reel 3) -->
+          <div class="col-span-1 sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:col-span-2 lg:max-w-none rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/S0tyt1NCsKI" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #06</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+              </div>
+              <div class="text-sm font-bold text-white line-clamp-1">আপনার দক্ষতাই হতে পারে আপনার ভবিষ্যৎ সফলতার চাবিকাঠি! 🚀</div>
+            </div>
           </div>
         </div>
-        <!-- 2. Reel 1 -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/1Q_cR71UGuk" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #02</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
-            </div>
-            <div class="text-sm font-bold text-white">Kinetic Edit 01</div>
-          </div>
+      </div>
+
+      <!-- PART 3: YOUTUBE WIDESCREEN & MOTION EDITS (Side-by-side at bottom, same size, centered) -->
+      <div>
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-zinc-800/60">
+          <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-2">
+            <span>⚡</span>
+            <span>YouTube Widescreen & Motion Edits (2)</span>
+          </h3>
+          <span class="text-xs font-mono text-zinc-400">16:9 Widescreen</span>
         </div>
-        <!-- 3. Reel 2 -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/OJMtDsnlC6c" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #03</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 6. Motion Video Edit -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/9No7udcYQjM" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #07</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Motion</span>
+              </div>
+              <div class="text-sm font-bold text-white line-clamp-1">Adobe After Effects Motion Video • নাজমুল হুদা মোশন</div>
             </div>
-            <div class="text-sm font-bold text-white">Visual Flow 02</div>
           </div>
-        </div>
-        <!-- 4. Reel 3 -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/x48dOQQ3Xok" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #04</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
+          <!-- 7. Motivational Story Video -->
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
+            <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/HcfAgHca3R8" class="w-full h-full border-0" allowfullscreen></iframe></div>
+            <div class="p-3.5 flex flex-col justify-between flex-1">
+              <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
+                <span>PROJECT #08</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Widescreen</span>
+              </div>
+              <div class="text-sm font-bold text-white line-clamp-1">কষ্ট ছাড়া সফলতা আসে না, আর পরিশ্রম ছাড়া শ্রেষ্ঠ হওয়া যায় না</div>
             </div>
-            <div class="text-sm font-bold text-white">Rhythm & Impact 03</div>
-          </div>
-        </div>
-        <!-- 5. Skill & Growth Reel -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-[9/14] bg-black"><iframe src="https://www.youtube-nocookie.com/embed/S0tyt1NCsKI" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #05</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">9:16 Reel</span>
-            </div>
-            <div class="text-sm font-bold text-white line-clamp-1">আপনার দক্ষতাই হতে পারে আপনার ভবিষ্যৎ সফলতার চাবিকাঠি! 🚀</div>
-          </div>
-        </div>
-        <!-- 6. Motion Video Edit -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/9No7udcYQjM" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #06</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Motion</span>
-            </div>
-            <div class="text-sm font-bold text-white line-clamp-1">Adobe After Effects Motion Video</div>
-          </div>
-        </div>
-        <!-- 7. Motivational Story Video -->
-        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden hover-lift flex flex-col">
-          <div class="aspect-video bg-black"><iframe src="https://www.youtube-nocookie.com/embed/HcfAgHca3R8" class="w-full h-full border-0" allowfullscreen></iframe></div>
-          <div class="p-3.5 flex flex-col justify-between flex-1">
-            <div class="flex items-center justify-between text-[11px] text-amber-400 font-mono mb-1">
-              <span>PROJECT #07</span>
-              <span class="px-2 py-0.5 rounded bg-zinc-900 text-zinc-300">16:9 Widescreen</span>
-            </div>
-            <div class="text-sm font-bold text-white line-clamp-1">কষ্ট ছাড়া সফলতা আসে না, আর পরিশ্রম ছাড়া শ্রেষ্ঠ হওয়া যায় না</div>
           </div>
         </div>
       </div>

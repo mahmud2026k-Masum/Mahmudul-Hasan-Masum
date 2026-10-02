@@ -65,6 +65,9 @@ export interface TranslationDictionary {
     theaterMode: string;
     watchInline: string;
     stopVideo: string;
+    reelsHeading: string;
+    widescreenHeading: string;
+    featuredShowreelBadge: string;
   };
   software: {
     tag: string;
@@ -242,6 +245,9 @@ export const translations: Record<Language, TranslationDictionary> = {
       theaterMode: 'Theater View',
       watchInline: 'Play Here',
       stopVideo: 'Stop',
+      reelsHeading: 'Viral Short-Form Reels & AI Edits',
+      widescreenHeading: 'YouTube Widescreen & Motion Edits',
+      featuredShowreelBadge: 'Featured Showreel • Portfolio',
     },
     software: {
       tag: 'Mastered Creative Stack',
@@ -424,6 +430,9 @@ export const translations: Record<Language, TranslationDictionary> = {
       theaterMode: 'থিয়েটার ভিউ',
       watchInline: 'এখানে দেখুন',
       stopVideo: 'বন্ধ করুন',
+      reelsHeading: 'ভাইরাল শর্টস ও এআই রিলস (৯:১৬)',
+      widescreenHeading: 'ইউটিউব ওয়াইডস্ক্রিন ও মোশন এডিটস (১৬:৯)',
+      featuredShowreelBadge: 'ফিচার্ড শোরিল • ক্রিয়েটিভ পোর্টফোলিও',
     },
     software: {
       tag: 'মাস্টারড ক্রিয়েটিভ স্ট্যাক',
